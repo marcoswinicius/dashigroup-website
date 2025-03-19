@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+:root {
+  --background: #191A19;
+  --foreground: #191A19;
+}
+
+@theme {
+  --color-dark-grey: #191A19;
+  --color-primary-orange: #F26529;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #191A19;
+    --foreground: #191A19;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-space-grotesk), sans-serif;
+}
