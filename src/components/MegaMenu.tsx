@@ -40,7 +40,7 @@ const MegaMenu = () => {
 
   return (
     <nav className="relative">
-      <ul className="flex items-center space-x-8">
+      <ul className="flex items-center space-x-6">
         {menuItems.map((item) => (
           <li
             key={item.title}
@@ -51,7 +51,7 @@ const MegaMenu = () => {
             <Link
               href={item.href}
               className={`
-                relative px-3 py-2 text-white text-2xl hover:text-primary-orange transition-colors duration-200
+                relative px-3 py-2 text-white text-lg hover:text-primary-orange transition-colors duration-200
                 group-hover:before:content-[''] group-hover:before:absolute group-hover:before:inset-0 
                 group-hover:before:bg-white/10 group-hover:before:rounded-md group-hover:before:-z-10
                 ${pathname === item.href ? 'after:content-[\'\'] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-primary-orange' : ''}

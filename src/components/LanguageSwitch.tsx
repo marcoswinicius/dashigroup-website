@@ -21,7 +21,7 @@ const LanguageSwitch = () => {
         className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors duration-200"
       >
         <Globe />
-        <span className='text-white text-2xl'>{currentLang.label}</span>
+        <span className='text-white text-lg'>{currentLang.label}</span>
         <svg
           className={`w-4 h-4 text-white transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
           fill="none"

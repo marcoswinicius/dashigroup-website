@@ -2,7 +2,9 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { useSwipeable } from 'react-swipeable';
 import { bannerSlides, SLIDE_DURATION } from '@/config/banner';
+import { ChevronRight } from 'lucide-react';
 
 export default function Banner() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -13,6 +15,17 @@ export default function Banner() {
     setCurrentSlide((prev) => (prev + 1) % bannerSlides.length);
     setProgress(0);
   };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + bannerSlides.length) % bannerSlides.length);
+    setProgress(0);
+  };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: nextSlide,
+    onSwipedRight: prevSlide,
+    trackMouse: true,
+  });
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -29,7 +42,7 @@ export default function Banner() {
   }, [currentSlide]);
 
   return (
-    <div className="relative w-full h-[790px] overflow-hidden">
+    <div className="relative w-full h-[calc(100vh-128px)] overflow-hidden" {...handlers}>
       {/* Slides */}
       <div className="relative w-full h-full">
         {bannerSlides.map((slide, index) => (
@@ -44,15 +57,15 @@ export default function Banner() {
               alt={slide.title}
               fill
               className="object-cover"
-              priority={index === 0}
+              priority={slide.image === "/images/construction-people.jpg"}
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
             <div className="absolute inset-0 bg-black/40" />
             
             {/* Conteúdo do Slide */}
-            <div className="absolute left-10 top-1/2 -translate-y-1/2 max-w-2xl">
-              <span className="text-white block text-6xl font-bold">{slide.title}</span>
-              <span className="text-primary-orange block text-6xl font-bold">{slide.title_two}</span>
+            <div className="absolute left-5 lg:left-24 top-1/2 -translate-y-1/2 max-w-2xl pr-14">
+              <span className="text-white block text-5xl lg:text-6xl font-bold">{slide.title}</span>
+              <span className="text-primary-orange block text-5xl lg:text-6xl font-bold">{slide.title_two}</span>
               <p className="text-xl text-white/90 mb-6 mt-4">
                 {slide.subtitle}
               </p>
@@ -73,10 +86,10 @@ export default function Banner() {
       {/* Botão Next */}
       <button
         onClick={nextSlide}
-        className="absolute right-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-200"
+        className="hidden lg:block absolute right-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-200"
         aria-label="Próximo slide"
       >        
-        <p>Chevron</p>
+        <ChevronRight className="text-primary-orange" size={48} />
       </button>
 
       {/* Indicadores de Slide */}
@@ -91,7 +104,7 @@ export default function Banner() {
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               index === currentSlide ? 'bg-white w-8' : 'bg-white/50'
             }`}
-            aria-label={`Ir para slide ${index + 1}`}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>

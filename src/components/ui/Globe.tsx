@@ -3,8 +3,8 @@ import * as React from "react"
 function SvgComponent(props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) {
   return (
     <svg
-      width={35}
-      height={35}
+      width={25}
+      height={25}
       viewBox="0 0 35 35"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
