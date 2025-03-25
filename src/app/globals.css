@@ -22,31 +22,32 @@ body {
   color: var(--foreground);
   font-family: var(--font-space-grotesk), sans-serif;
 }
-/* Esconder a barra de rolagem */
-.scrollbar-hide {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
 
-.scrollbar-hide::-webkit-scrollbar {
-    display: none;  /* Chrome, Safari and Opera */
-}
+@layer utilities {
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 
-/* Melhorar a experiência de arrastar */
-.cursor-grab:active {
-    cursor: grabbing;
-}
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 
-/* Transições suaves */
-.transition-transform {
-    transition-property: transform;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms;
-}
+  /* Prevent content selection during dragging */
+  .select-none {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 
-.transition-opacity {
-    transition-property: opacity;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms;
+  /* Carousel specific styles */
+  .carousel-container {
+    -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+    overscroll-behavior-x: contain; /* Prevent overscrolling on mobile */
+    /* Hardware acceleration for smoother scrolling */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
 }
-

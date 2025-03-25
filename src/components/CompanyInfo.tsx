@@ -4,19 +4,19 @@ import Image from "next/image"
 export default function CompanyInfo() {
     return (
         <>
-            <div className="w-full flex px-8 md:px-28 mt-16 justify-center md:justify-start">
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-12">
-                    <div className="flex gap-1">
-                        <span className="text-primary-orange text-5xl font-bold">23+</span>
-                        <span className="text-white leading-tight w-[100px]">Years of Experience</span>
+            <div className="w-full flex px-4 md:px-28 mt-16 justify-center md:justify-start">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12">
+                    <div className="flex gap-1 items-center">
+                        <span className="text-primary-orange text-4xl md:text-5xl font-bold">23+</span>
+                        <span className="text-white text-sm leading-tight">Years of<br/> Experience</span>
                     </div>
-                    <div className="flex gap-1">
-                        <span className="text-primary-orange text-5xl font-bold">+21</span>
-                        <span className="text-white leading-tight w-[100px]">Tier 1 Contractors</span>
+                    <div className="flex gap-1 items-center">
+                        <span className="text-primary-orange text-4xl md:text-5xl font-bold">+21</span>
+                        <span className="text-white text-sm leading-tight">Tier 1<br/> Contractors</span>
                     </div>
-                    <div className="flex gap-1 col-span-2 md:col-span-1 justify-center md:justify-start">
-                        <span className="text-primary-orange text-5xl font-bold">69+</span>
-                        <span className="text-white leading-tight w-[100px]">Tier 2 Contractors</span>
+                    <div className="flex gap-1 col-span-2 items-center md:col-span-1 justify-center md:justify-start">
+                        <span className="text-primary-orange text-4xl md:text-5xl font-bold">69+</span>
+                        <span className="text-white text-sm leading-tight">Tier 2<br/> Contractors</span>
                     </div>
                 </div>
             </div>
