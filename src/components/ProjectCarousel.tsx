@@ -228,7 +228,7 @@ export default function FeaturedProjects() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-4">
         <h2 className="text-3xl md:text-6xl font-bold">Featured Projects</h2>
 
-        <div className="flex flex-wrap gap-7 mr-24">
+        <div className="flex flex-wrap gap-7 mr-10 lg:mr-24">
           {filterCategories.map((category) => (
             <button
               key={category}
@@ -283,9 +283,9 @@ export default function FeaturedProjects() {
                 key={project.id}
                 className="carousel-item flex-shrink-0 w-full sm:w-[calc(100%/1.5)] md:w-[calc(100%/2.2)] lg:w-[calc(100%/3.2)] p-2"
               >
-                <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[613px] overflow-hidden rounded-lg group">
+                <div className="relative h-[400px] sm:h-[400px] md:h-[500px] lg:h-[613px] overflow-hidden rounded-lg group">
                   <Image
-                    src={project.imageUrl || "/placeholder.svg"}
+                    src={project.imageUrl}
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -319,7 +319,7 @@ export default function FeaturedProjects() {
           aria-label="Next slide"
           disabled={isAtEnd}
         >
-          <ChevronRight className="h-6 w-6" />
+          <ChevronRight className="h-6 w-6 text-white" />
         </button>
       </div>
 

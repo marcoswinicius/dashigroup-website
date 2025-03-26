@@ -1,6 +1,7 @@
-import { Check } from 'lucide-react';
+import { Check, Clock, ContactIcon, LocateIcon, MapPin, PinIcon } from 'lucide-react';
 import { ContactForm } from './ContactForm';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Contact() {
     return (
@@ -18,9 +19,9 @@ export default function Contact() {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 container mx-auto px-4 py-20">
+            <div className="relative z-10 container mx-auto px-4 md:px-14 py-20">
                 {/* Title */}
-                <h1 className="text-[64px] text-white font-bold text-center mb-16">
+                <h1 className="text-white text-5xl lg:text-6xl font-bold text-center mb-16">
                     Leading Way In Building & Civil Construction
                 </h1>
 
@@ -48,32 +49,46 @@ export default function Contact() {
                         <h3 className="text-2xl font-bold mb-4">Request A Quote</h3>
                         <p className="mb-8">
                             Complete control over products allow us to our customers the best quality
-                            prices and services. We take great pride in everything that we do in Dashi Group
+                            prices and services. <br />We take great pride in everything that we do in Dashi Group
                         </p>
                         <ContactForm />
                     </div>
 
                     {/* Info Block */}
                     <div className="bg-primary-orange rounded-[15px] p-6 md:p-[54px] w-full lg:w-[499px]">
+
                         <h3 className="text-2xl font-bold mb-8">Contact Info</h3>
-                        
-                        <h4 className="text-xl font-bold mb-2">Our Location</h4>
-                        <p className="mb-6">Address: 85 Tottenham Court Road, London W1T 4TQ</p>
-                        
-                        <h4 className="text-xl font-bold mb-2">Quick Contact</h4>
+                        <div className='flex gap-2 items-center'>
+                            <h4 className="text-xl font-bold">Our Location</h4>
+                            <MapPin width={20} />
+                        </div>
+                        <p className="mb-6">Address: 85 Tottenham Court Road,<br /> London W1T 4TQ</p>
+
+                        <div className='flex gap-2 items-center'>
+                            <h4 className="text-xl font-bold ">Quick Contact</h4>
+                            <ContactIcon width={20} />
+                        </div>
+
                         <p className="mb-6">
-                            Tel: +44 (0) 7814729231 and +44 (0) 2035766134<br />
-                            Email: info@dashigroup.co.uk
+                            <b>Tel:</b>{' '}
+                            <Link href="tel:+447814729231">+44 (0) 7814729231</Link> and<br />
+                            <Link href="tel:+442035766134">+44 (0) 2035766134</Link> <br />
+
+                            <b>Email:</b>{' '}
+                            <Link href="mailto:info@dashigroup.co.uk">info@dashigroup.co.uk</Link>                       
                         </p>
-                        
-                        <h4 className="text-xl font-bold mb-2">Opening Hours</h4>
+
+                        <div className='flex gap-2 items-center'>
+                            <h4 className="text-xl font-bold">Opening Hours</h4>
+                            <Clock width={20} />
+                        </div>
                         <p className="mb-8">
                             Monday - Friday<br />
                             09:00 AM - 06:00 PM
                         </p>
-                        
-                        <p className="mb-6">Do You Have Any Question, Just Contact Us To Get Help!</p>
-                        
+
+                        <p className="mb-6">Do You Have Any Question, <br />Just Contact Us To Get Help!</p>
+
                         <button className="bg-dark-grey text-white px-8 py-3 rounded-md w-full">
                             Contact Us
                         </button>

@@ -8,7 +8,7 @@ import Link from 'next/link';
 const Header = () => {
   return (
     <header className="bg-dark-grey shadow-sm flex items-center justify-center">
-      <div className="max-w-7xl w-full px-4 sm:px-6 lg:px-8 py-8">
+      <div className="w-full px-4 sm:px-6 md:px-6 lg:px-16 2xl:px-28 py-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
             <Link href={'/'}>

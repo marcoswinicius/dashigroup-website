@@ -18,7 +18,7 @@
 }
 
 body {
-  background: var(--background);
+  background: var(--background) url('/background.svg') no-repeat fixed center;
   color: var(--foreground);
   font-family: var(--font-space-grotesk), sans-serif;
 }

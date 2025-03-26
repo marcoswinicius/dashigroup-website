@@ -19,7 +19,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         <select
           defaultValue="Select Your Service"
           className={cn(
-            'w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-orange focus:border-transparent',
+            'w-full px-4 py-3 rounded-md border bg-white border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-orange focus:border-transparent',
             error && 'border-red-500',
             className
           )}
@@ -27,7 +27,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           {...props}
         >
           {placeholder && (
-            <option value="" disabled>
+            <option disabled>
               {placeholder}
             </option>
           )}
