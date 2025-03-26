@@ -58,8 +58,8 @@ export default function Footer() {
                     <div>
                         <h3 className="font-bold text-lg mb-4">Contact</h3>
                         <p className="text-sm">
-                            Email: contact@jhntracktor.co<br />
-                            Phone: (+62) 877-2469-7246
+                            Email: info@dashigroup.co.uk<br />
+                            Phone: +44 (0) 7814729231
                         </p>
                     </div>
 

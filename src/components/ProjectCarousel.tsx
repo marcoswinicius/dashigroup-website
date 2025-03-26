@@ -235,7 +235,7 @@ export default function FeaturedProjects() {
               onClick={() => setActiveFilter(category)}
               className={classNames(
                 "py-1 text-xl transition-colors",
-                activeFilter === category ? "border-b-3 border-dark-grey text-dark-grey" : "text-white hover:bg-secondary/80"
+                activeFilter === category ? "border-b-3 border-dark-grey text-dark-grey" : "text-white hover:border-b-3 hover:border-white"
               )}
             >
               {category}
