@@ -1,4 +1,4 @@
-import { Check, Clock, ContactIcon, LocateIcon, MapPin, PinIcon } from 'lucide-react';
+import { Check, Clock, ContactIcon, MapPin } from 'lucide-react';
 import { ContactForm } from './ContactForm';
 import Image from 'next/image';
 import Link from 'next/link';

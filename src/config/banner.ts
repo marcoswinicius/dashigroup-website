@@ -17,16 +17,16 @@ export const bannerSlides: BannerSlide[] = [
   {
     id: 2,
     image: '/images/group-engineers-banner.jpg',
-    title: 'Lorem',
-    title_two:'Ipsum',
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec condimentum felis. Proin mollis in lectus sed ultricies. Integer ac ullamcorper dui.',
+    title: 'What',
+    title_two:'We Do',
+    subtitle: 'We deliver innovative construction solutions, specializing in reinforced concrete frameworks, steel fixing, and RC detailing, ensuring every project meets the highest standards of quality and efficiency.',
   },
   {
     id: 3,
-    image: '/images/construction-people.jpg',
-    title: 'Just',
-    title_two:'Do It',
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec condimentum felis. Proin mollis in lectus sed ultricies. Integer ac ullamcorper dui.',
+    image: '/images/building.jpg',
+    title: 'Building',
+    title_two:'The Future',
+    subtitle: 'With over two decades of expertise, we craft sustainable, high-profile projects that anticipate challenges, optimize designs, and leave a lasting impact on the world around us.',
   },
 ];
 

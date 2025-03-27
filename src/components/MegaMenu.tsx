@@ -24,8 +24,8 @@ const menuItems = [
     ]
   },
   { 
-    title: 'Project', 
-    href: '/project',
+    title: 'Projects', 
+    href: '/projects',
     dropdownItems: [
       { title: 'Portfólio', href: '/project/portfolio' },
       { title: 'Cases de Sucesso', href: '/project/cases' },

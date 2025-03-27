@@ -29,7 +29,7 @@ const projectsData: Project[] = [
     title: "Data Center",
     subtitle: "REINFORCEMENT DETAILING",
     imageUrl: "/images/data-science.jpg",
-    link: "/case-studies/reinforcement-alpha",
+    link: "/projects/data-center",
     category: "REINFORCEMENT DETAILING",
   },
   {
@@ -37,7 +37,7 @@ const projectsData: Project[] = [
     title: "Panorama St Paul",
     subtitle: "STEEL FIXING",
     imageUrl: "/images/panorama-st-paul.png",
-    link: "/case-studies/steel-fixing-beta",
+    link: "/projects/panorama-st-pauls",
     category: "STEEL FIXING",
   },
   {
@@ -45,7 +45,7 @@ const projectsData: Project[] = [
     title: "Ashley Road",
     subtitle: "REINFORCEMENT DETAILING",
     imageUrl: "/images/ahsley-road.jpg",
-    link: "/case-studies/groundwork-gamma",
+    link: "/projects/ashley-road",
     category: "STEEL FIXING",
   },
   {
@@ -53,7 +53,7 @@ const projectsData: Project[] = [
     title: "Lombard Square",
     subtitle: "STEEL FIXING",
     imageUrl: "/images/lombard-square.jpg",
-    link: "/case-studies/reinforcement-delta",
+    link: "/projects/lombard-square",
     category: "REINFORCEMENT DETAILING",
   },
   {

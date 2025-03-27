@@ -78,24 +78,44 @@ export default function Projects() {
                 >
                     <div className="flex gap-6">
                         {filteredProjects.map((project) => (
-                            <Link
-                                key={project.id}
-                                href={project.link}
-                                className="flex-shrink-0 w-[calc(33.333%-1rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(33.333%-1rem)]"
-                            >
-                                <div className="relative h-[613px] rounded-lg overflow-hidden group">
-                                    <Image
-                                        src={project.image}
-                                        alt={project.title}
-                                        fill
-                                        className="object-cover transition-transform duration-300 group-hover:scale-110"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                                        <h3 className="text-2xl font-bold">{project.title}</h3>
+                            project.link ? (
+                                <Link
+                                    key={project.id}
+                                    href={project.link}
+                                    className="flex-shrink-0 w-[calc(33.333%-1rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(33.333%-1rem)]"
+                                >
+                                    <div className="relative h-[613px] rounded-lg overflow-hidden group">
+                                        <Image
+                                            src={project.image}
+                                            alt={project.title}
+                                            fill
+                                            className="object-cover transition-transform duration-300 group-hover:scale-110"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                        <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                                            <h3 className="text-2xl font-bold">{project.title}</h3>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ) : (
+                                <div
+                                    key={project.id}
+                                    className="flex-shrink-0 w-[calc(33.333%-1rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(33.333%-1rem)]"
+                                >
+                                    <div className="relative h-[613px] rounded-lg overflow-hidden group">
+                                        <Image
+                                            src={project.image}
+                                            alt={project.title}
+                                            fill
+                                            className="object-cover transition-transform duration-300 group-hover:scale-110"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                        <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                                            <h3 className="text-2xl font-bold">{project.title}</h3>
+                                        </div>
                                     </div>
                                 </div>
-                            </Link>
+                            )
                         ))}
                     </div>
                 </div>
