@@ -80,7 +80,7 @@ export default function Services() {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
-                className="py-16 px-6 lg:px-24 bg-white"
+                className="py-16 px-6 lg:px-24 bg-primary-orange"
             >
                 <div className="max-w-4xl mx-auto text-center">
                     <p className="text-lg text-dark-grey leading-relaxed">
@@ -90,7 +90,7 @@ export default function Services() {
             </motion.section>
 
             {/* Services Section */}
-            <section className="py-16 px-6 lg:px-24 bg-gray-50">
+            <section className="py-16 px-6 lg:px-24 bg-dark-grey">
                 <h2 className="text-4xl font-bold text-center mb-16">What We Offer</h2>
                 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -167,7 +167,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, ima
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+        className="bg-black/20 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow border-[0.5px] border-primary-orange/100"
     >
         <div className="relative h-48">
             <Image
@@ -180,8 +180,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, ima
         </div>
         <div className="p-6">
             <div className="mb-4">{icon}</div>
-            <h3 className="text-xl font-bold mb-2">{title}</h3>
-            <p className="text-dark-grey">{description}</p>
+            <h3 className="text-white text-xl font-bold mb-2">{title}</h3>
+            <p className="text-white">{description}</p>
         </div>
     </motion.div>
 );

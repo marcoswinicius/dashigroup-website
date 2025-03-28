@@ -4,6 +4,8 @@ export interface BannerSlide {
   title: string;
   title_two: string;
   subtitle: string;
+  button_link: string;
+  button_name: string;
 }
 
 export const bannerSlides: BannerSlide[] = [
@@ -13,6 +15,8 @@ export const bannerSlides: BannerSlide[] = [
     title: 'Excellence in',
     title_two:'Everything We Do',
     subtitle: 'We partner with our clients to transform visions intolasting legacies, creating projects that empower communities and shape a brighter future.',
+    button_link: "/projects",
+    button_name: "Our Projects"
   },
   {
     id: 2,
@@ -20,6 +24,8 @@ export const bannerSlides: BannerSlide[] = [
     title: 'What',
     title_two:'We Do',
     subtitle: 'We deliver innovative construction solutions, specializing in reinforced concrete frameworks, steel fixing, and RC detailing, ensuring every project meets the highest standards of quality and efficiency.',
+    button_link: "/services",
+    button_name: "Our services"
   },
   {
     id: 3,
@@ -27,6 +33,8 @@ export const bannerSlides: BannerSlide[] = [
     title: 'Building',
     title_two:'The Future',
     subtitle: 'With over two decades of expertise, we craft sustainable, high-profile projects that anticipate challenges, optimize designs, and leave a lasting impact on the world around us.',
+    button_link: "/about",
+    button_name: "About Us"
   },
 ];
 

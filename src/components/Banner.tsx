@@ -48,9 +48,8 @@ export default function Banner() {
         {bannerSlides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`absolute w-full h-full transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
+            className={`absolute w-full h-full transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
           >
             <Image
               src={slide.image}
@@ -61,7 +60,7 @@ export default function Banner() {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
             <div className="absolute inset-0 bg-black/40" />
-            
+
             {/* Conteúdo do Slide */}
             <div className="absolute left-5 lg:left-24 top-1/2 -translate-y-1/2 max-w-2xl pr-14">
               <span className="text-white block text-5xl lg:text-6xl font-bold">{slide.title}</span>
@@ -69,7 +68,16 @@ export default function Banner() {
               <p className="text-xl text-white/90 mb-6 mt-4">
                 {slide.subtitle}
               </p>
-              
+
+              <a href={slide.button_link}>
+                <button className='cursor-pointer inline-flex mb-4 items-center px-7 py-2 border border-transparent text-lg font-medium rounded-md text-white bg-primary-orange hover:bg-primary-orange/90 transition-colors duration-200'>
+                  <span className='text-white'>{slide.button_name}</span>
+                </button>
+              </a>
+
+
+
+
               {/* Timer */}
               <div className="w-full h-1 bg-white/20">
                 <div
@@ -88,7 +96,7 @@ export default function Banner() {
         onClick={nextSlide}
         className="hidden lg:block absolute right-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-200"
         aria-label="Próximo slide"
-      >        
+      >
         <ChevronRight className="text-primary-orange" size={48} />
       </button>
 
@@ -101,9 +109,8 @@ export default function Banner() {
               setCurrentSlide(index);
               setProgress(0);
             }}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide ? 'bg-white w-8' : 'bg-white/50'
-            }`}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? 'bg-white w-8' : 'bg-white/50'
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

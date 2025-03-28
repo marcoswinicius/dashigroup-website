@@ -1,89 +1,191 @@
 "use client"
 
-import React, { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
+import { ChevronDown } from 'lucide-react';
 
 const menuItems = [
-  { 
-    title: 'Home', 
+  {
+    title: 'Home',
     href: '/',
   },
-  { 
-    title: 'About Us', 
+  {
+    title: 'About Us',
     href: '/about',
   },
-  { 
-    title: 'Services', 
+  {
+    title: 'Services',
     href: '/services',
-    dropdownItems: [
-      { title: 'Consultoria', href: '/services/consultoria' },
-      { title: 'Desenvolvimento', href: '/services/desenvolvimento' },
-      { title: 'Design', href: '/services/design' },
-      { title: 'Marketing Digital', href: '/services/marketing' },
-    ]
+    dropdown: {
+      items: [
+        {
+          title: 'Reinforcement Detailing',
+          subtitle: 'Civil Engineering & Consulting',
+          image: '/images/rc-installation.jpg',
+          href: '/services/reinforcement-detailing',
+        },
+        {
+          title: 'Steel Fixing',
+          image: '/images/groundwork-and-falsework-tab.jpg',
+          href: '/services/steel-fixing',
+        },
+        {
+          title: 'Groundwork & Falsework',
+          image: '/images/reinforcemet-detailing.jpg',
+          href: '/services/groundwork-falsework',
+        },
+      ],
+    },
   },
-  { 
-    title: 'Projects', 
+  {
+    title: 'Projects',
     href: '/projects',
-    dropdownItems: [
-      { title: 'Portfólio', href: '/project/portfolio' },
-      { title: 'Cases de Sucesso', href: '/project/cases' },
-      { title: 'Em Andamento', href: '/project/ongoing' },
-    ]
+    dropdown: {
+      items: [
+        {
+          title: 'Project 1',
+          image: '/images/default-project.jpg',
+          href: '/projects/project-1',
+        },
+        {
+          title: 'Project 2',
+          image: '/images/default-project.jpg',
+          href: '/projects/project-2',
+        },
+        {
+          title: 'Project 3',
+          image: '/images/default-project.jpg',
+          href: '/projects/project-3',
+        },
+        {
+          title: 'Project 4',
+          image: '/images/default-project.jpg',
+          href: '/projects/project-4',
+        },
+      ],
+    },
   },
 ];
 
-const MegaMenu = () => {
-  const [activeItem, setActiveItem] = useState<string | null>(null);
+export default function MegaMenu() {
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
   const pathname = usePathname();
+  const menuRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (openMenu && dropdownRef.current) {
+      const header = dropdownRef.current.closest('header');
+      const headerRect = header?.getBoundingClientRect();
+      const dropdownRect = dropdownRef.current.getBoundingClientRect();
+
+      if (headerRect) {
+        // Garante que o dropdown fique dentro dos limites do header
+        dropdownRef.current.style.left = `${headerRect.left}px`;
+        dropdownRef.current.style.width = `${headerRect.width}px`;
+        dropdownRef.current.style.maxWidth = '100%';
+      }
+
+      // Previne rolagem horizontal ajustando a posição se necessário
+      if (dropdownRect.right > window.innerWidth) {
+        dropdownRef.current.style.left = `${window.innerWidth - dropdownRect.width}px`;
+      }
+    }
+  }, [openMenu]);
 
   return (
-    <nav className="relative">
-      <ul className="flex items-center space-x-6">
-        {menuItems.map((item) => (
-          <li
-            key={item.title}
-            className="relative group"
-            onMouseEnter={() => setActiveItem(item.title)}
-            onMouseLeave={() => setActiveItem(null)}
+    <nav className="relative flex items-center gap-8">
+      {menuItems.map((item) => (
+        <div
+          key={item.title}
+          ref={(el) => {
+            if (el) menuRefs.current.set(item.title, el);
+          }}
+          className="relative"
+          onMouseEnter={() => setOpenMenu(item.title)}
+          onMouseLeave={() => setOpenMenu(null)}
+        >
+          <Link
+            href={item.href}
+            className={`text-white hover:text-primary-orange transition-colors relative pb-2 flex items-center gap-1 ${
+              pathname === item.href ? 'text-primary-orange' : ''
+            }`}
           >
-            <Link
-              href={item.href}
-              className={`
-                relative px-3 py-2 text-white text-lg hover:text-primary-orange transition-colors duration-200
-                group-hover:before:content-[''] group-hover:before:absolute group-hover:before:inset-0 
-                group-hover:before:bg-white/10 group-hover:before:rounded-md group-hover:before:-z-10
-                ${pathname === item.href ? 'after:content-[\'\'] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-primary-orange' : ''}
-              `}
-            >
-              {item.title}
-            </Link>
+            {item.title}
+            {item.dropdown && (
+              <ChevronDown
+                size={16}
+                className={`text-white transition-transform duration-200 ${
+                  openMenu === item.title ? 'rotate-180' : ''
+                }`}
+              />
+            )}
+            {pathname === item.href && (
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary-orange"></span>
+            )}
+          </Link>
 
-            {item.dropdownItems && activeItem === item.title && (
-              <div className="absolute top-full left-0 mt-2 w-64 bg-dark-grey rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50">
-                <div className="py-2" role="menu">
-                  {item.dropdownItems.map((dropdownItem) => (
-                    <Link
-                      key={dropdownItem.title}
-                      href={dropdownItem.href}
-                      className={`
-                        block px-4 py-3 text-sm text-white hover:bg-white/10 transition-colors duration-200
-                        ${pathname === dropdownItem.href ? 'border-l-2 border-primary-orange bg-white/5' : ''}
-                      `}
-                      role="menuitem"
-                    >
-                      {dropdownItem.title}
-                    </Link>
-                  ))}
+          {item.dropdown && openMenu === item.title && (
+            <div
+              ref={dropdownRef}
+              className="absolute top-full mt-2 bg-dark-grey rounded-lg shadow-lg p-6 z-50 w-full left-0"
+            >
+              <div
+                className={`${
+                  item.title === 'Services'
+                    ? 'grid grid-cols-1 md:grid-cols-3 gap-4'
+                    : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'
+                } max-w-full`}
+              >
+                {item.dropdown.items.map((dropdownItem) => (
+                  <Link
+                    key={dropdownItem.title}
+                    href={dropdownItem.href}
+                    className="group flex flex-col md:flex-row gap-4 hover:bg-gray-800 p-2 rounded-md transition-colors"
+                  >
+                    <div className="relative w-full md:w-24 h-24 flex-shrink-0">
+                      <Image
+                        src={dropdownItem.image}
+                        alt={dropdownItem.title}
+                        fill
+                        className="object-cover rounded-md"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-white font-semibold group-hover:text-primary-orange">
+                        {dropdownItem.title}
+                      </h3>
+                      {dropdownItem.subtitle && (
+                        <p className="text-gray-400 text-sm">{dropdownItem.subtitle}</p>
+                      )}
+                      <button className="mt-2 text-primary-orange text-sm font-medium group-hover:underline">
+                        Learn More →
+                      </button>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Call to Action */}
+              <div className="mt-6 pt-4 border-t border-gray-700">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                  <p className="text-white text-sm">
+                    Need a custom solution?
+                  </p>
+                  <Link
+                    href="/contact"
+                    className="bg-primary-orange text-white px-4 py-2 rounded-md hover:bg-primary-orange/90 transition-colors text-sm"
+                  >
+                    Contact Us
+                  </Link>
                 </div>
               </div>
-            )}
-          </li>
-        ))}
-      </ul>
+            </div>
+          )}
+        </div>
+      ))}
     </nav>
   );
-};
-
-export default MegaMenu; 
+}
