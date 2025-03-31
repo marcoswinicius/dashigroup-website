@@ -145,7 +145,7 @@ const Header = () => {
 
       {/* Mobile Menu Overlay */}
       {mobileOpen && (
-        <div className="fixed inset-0 bg-dark-grey z-50 px-6 py-8 transition-all overflow-y-auto flex flex-col justify-between">
+        <div className="fixed inset-0 bg-dark-grey z-50 px-6 py-6 transition-all overflow-y-auto flex flex-col justify-between">
           <div>
             {/* Topo com logo e botão de fechar no mesmo lugar */}
             <div className="flex items-center justify-between mb-8">
