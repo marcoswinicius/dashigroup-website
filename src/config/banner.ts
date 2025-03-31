@@ -38,4 +38,4 @@ export const bannerSlides: BannerSlide[] = [
   },
 ];
 
-export const SLIDE_DURATION = 5000; // 5 segundos por slide 
+export const SLIDE_DURATION = 5000;

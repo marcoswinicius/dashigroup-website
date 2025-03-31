@@ -93,6 +93,10 @@ export default function FeaturedProjects() {
   const carouselRef = useRef<HTMLDivElement>(null)
   const lastDragX = useRef<number>(0)
 
+  const [startY, setStartY] = useState(0);
+  const [isHorizontalScroll, setIsHorizontalScroll] = useState(false);
+
+
   // Filter projects when activeFilter changes
   useEffect(() => {
     if (activeFilter === "ALL WORKS") {
@@ -152,16 +156,16 @@ export default function FeaturedProjects() {
 
   // Handle touch start for mobile
   const handleTouchStart = (e: React.TouchEvent) => {
-    if (!carouselRef.current) return
+    if (!carouselRef.current) return;
 
-    setIsDragging(true)
-    setStartX(e.touches[0].clientX)
-    setScrollLeft(carouselRef.current.scrollLeft)
-    lastDragX.current = e.touches[0].clientX
+    setIsDragging(true);
+    setStartX(e.touches[0].clientX);
+    setStartY(e.touches[0].clientY);
+    setScrollLeft(carouselRef.current.scrollLeft);
+    lastDragX.current = e.touches[0].clientX;
+    setIsHorizontalScroll(false);
+  };
 
-    // Prevent text selection during dragging
-    document.body.classList.add("select-none")
-  }
 
   // Handle mouse move for dragging with precise 1:1 movement
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -179,17 +183,26 @@ export default function FeaturedProjects() {
 
   // Handle touch move for mobile with precise 1:1 movement
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging || !carouselRef.current) return
-    e.preventDefault() // Prevent page scrolling while dragging
+    if (!isDragging || !carouselRef.current) return;
 
-    const currentX = e.touches[0].clientX
+    const currentX = e.touches[0].clientX;
+    const currentY = e.touches[0].clientY;
+    const diffX = Math.abs(currentX - startX);
+    const diffY = Math.abs(currentY - startY);
 
-    // Update last position
-    lastDragX.current = currentX
+    const threshold = 10; // px para considerar que é horizontal
 
-    // Move the carousel with the touch in a 1:1 ratio
-    carouselRef.current.scrollLeft = scrollLeft - (currentX - startX)
-  }
+    if (!isHorizontalScroll && diffX > threshold && diffX > diffY) {
+      setIsHorizontalScroll(true);
+    }
+
+    if (isHorizontalScroll) {
+      e.preventDefault(); // Só previne se for claramente horizontal
+      carouselRef.current.scrollLeft = scrollLeft - (currentX - startX);
+    }
+  };
+
+
 
   // Handle mouse up to stop dragging - no momentum or snap
   const handleMouseUp = () => {
@@ -281,7 +294,8 @@ export default function FeaturedProjects() {
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
-                className="carousel-item flex-shrink-0 w-full sm:w-[calc(100%/1.5)] md:w-[calc(100%/2.2)] lg:w-[calc(100%/3.2)] p-2"
+                className="carousel-item flex-shrink-0 w-[85%] sm:w-[calc(100%/1.5)] md:w-[calc(100%/2.2)] lg:w-[calc(100%/3.2)] mx-2 first:ml-4 last:mr-4"
+
               >
                 <div className="relative h-[400px] sm:h-[400px] md:h-[500px] lg:h-[613px] overflow-hidden rounded-lg group">
                   <Image

@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import NextTopLoader from 'nextjs-toploader';
+import WhatsApp from "@/components/ui/WhatsApp";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -50,6 +51,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <WhatsApp />
       </body>
     </html>
   );

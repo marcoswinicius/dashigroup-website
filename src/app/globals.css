@@ -47,11 +47,16 @@ body {
 
   /* Carousel specific styles */
   .carousel-container {
-    -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
-    overscroll-behavior-x: contain; /* Prevent overscrolling on mobile */
-    /* Hardware acceleration for smoother scrolling */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: auto; /* ← permite scroll vertical e horizontal normalmente */
     transform: translateZ(0);
     backface-visibility: hidden;
     perspective: 1000px;
   }
+
+  .scroll-snap-x {
+    scroll-snap-type: x mandatory;
+  }
+  
+  
 }
