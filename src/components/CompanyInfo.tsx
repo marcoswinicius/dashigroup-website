@@ -1,24 +1,13 @@
+"use client"
+
+import Indicators from "./Indicators"
 import TransitionCard from "./TransitionCard"
+import { motion } from 'framer-motion';
 
 export default function CompanyInfo() {
     return (
         <>
-            <div className="w-full flex px-4 md:px-28 mt-16 justify-center md:justify-start">
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12">
-                    <div className="flex gap-1 items-center">
-                        <span className="text-primary-orange text-4xl md:text-5xl font-bold">23+</span>
-                        <span className="text-white text-sm leading-tight">Years of<br /> Experience</span>
-                    </div>
-                    <div className="flex gap-1 items-center">
-                        <span className="text-primary-orange text-4xl md:text-5xl font-bold">+21</span>
-                        <span className="text-white text-sm leading-tight">Tier 1<br /> Contractors</span>
-                    </div>
-                    <div className="flex gap-1 col-span-2 items-center md:col-span-1 justify-center md:justify-start">
-                        <span className="text-primary-orange text-4xl md:text-5xl font-bold">03+</span>
-                        <span className="text-white text-sm leading-tight">Tier 2<br /> Contractors</span>
-                    </div>
-                </div>
-            </div>
+            <Indicators />
 
             <div className="flex flex-col lg:flex-row w-full items-center justify-center py-[120px] px-8 md:px-24 gap-32">
                 <div className="w-full lg:w-2/5">
@@ -26,6 +15,12 @@ export default function CompanyInfo() {
                 </div>
 
                 <div className="flex flex-col gap-11 w-full lg:w-3/5">
+                <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="max-w-4xl"
+              >
                     <div className="flex flex-col">
                         <span className="text-primary-orange block text-5xl lg:text-6xl font-bold">
                             Execute large-scale,
@@ -34,6 +29,7 @@ export default function CompanyInfo() {
                             high-impact projects
                         </span>
                     </div>
+                    </motion.div>
                     <p className="text-white">
                         At Dashi Group, we are committed to leveraging our expertise to proactively collaborate with our clients, ensuring the successful delivery of high-profile construction projects.
                         <br /><br />

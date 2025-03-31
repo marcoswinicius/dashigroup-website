@@ -1,22 +1,28 @@
 
 import Link from 'next/link';
+import WhiteLogo from "../../public/white-logo.svg"
+import Image from 'next/image';
+import InstaIcon from "../../public/social-icons/instagram-icon.svg"
+import FaceIcon from "../../public/social-icons/facebook-icon.svg"
+import LinkedinIcon from "../../public/social-icons/linkedin-icon.svg"
+import { ChevronRight } from 'lucide-react';
 
 
 export default function Footer() {
     return (
-        <footer className="bg-black text-white py-12">
+        <footer className="bg-dark-grey text-white py-12">
             <div className="container mx-auto px-4">
                 {/* Newsletter Section */}
                 <div className="flex justify-end items-center mb-8">
                     <span className="text-sm uppercase mr-4">Subscribe to our newsletter:</span>
-                    <div className="flex items-center bg-gray-800 rounded-full px-4 py-2">
+                    <div className="flex items-center bg-white/10 rounded-full px-4 py-2">
                         <input
                             type="email"
                             placeholder="Enter your email address"
                             className="bg-transparent text-gray-400 focus:outline-none text-sm"
                         />
                         
-                        Arrow
+                        <ChevronRight className='cursor-pointer' />
                     </div>
                 </div>
 
@@ -25,22 +31,34 @@ export default function Footer() {
                     {/* Company Info Column */}
                     <div>
                         <div className="flex items-center mb-4">
-                            <div className="w-8 h-8 bg-white rounded-full mr-2"></div>
-                            <span className="font-bold text-xl">DASHI</span>
+                            <Image
+                            src={WhiteLogo}
+                            alt='White logo'
+                            />
                         </div>
                         <h3 className="font-bold text-lg mb-4">About Us</h3>
                         <p className="text-sm mb-6">
-                            WE HAVE THE CONFIDENCE TO PROVIDE THE BEST SERVICE FOR YOU, WITH THE SUPPORT OF PROFESSIONAL AND CERTIFIED HR THAT WE CURRENTLY HAVE AND THE HIGH-QUALITY MATERIALS WE USE AND STRUCTURED WORK TECHNIQUES, WE WILL BE ABLE TO REALIZE TIMELY COMPLETION OF WORK.
+                        At Dashi Group, we are committed to leveraging our expertise to proactively collaborate with our clients,
+                         ensuring the successful delivery of high-profile construction projects.
                         </p>
                         <div className="flex space-x-4">
-                            <div className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center">
-                                asd
+                            <div className="w-8 h-8 bg-bg-white/10 rounded-full flex items-center justify-center">
+                            <Image
+                            src={InstaIcon}
+                            alt='Insta Icon'
+                            />
                             </div>
-                            <div className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center">
-                                asd
+                            <div className="w-8 h-8 bg-bg-white/10 rounded-full flex items-center justify-center">
+                            <Image
+                            src={FaceIcon}
+                            alt='Facebook Icon'
+                            />
                             </div>
-                            <div className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center">
-                                icon
+                            <div className="w-8 h-8 bg-bg-white/10 rounded-full flex items-center justify-center">
+                            <Image
+                            src={LinkedinIcon}
+                            alt='Linkedin Icon'
+                            />
                             </div>
                         </div>
                     </div>
@@ -67,10 +85,10 @@ export default function Footer() {
                     <div>
                         <h3 className="font-bold text-lg mb-4">Link</h3>
                         <ul className="space-y-2">
-                            <li><Link href="/" className="text-sm hover:text-gray-400">Home</Link></li>
-                            <li><Link href="/about" className="text-sm hover:text-gray-400">About Us</Link></li>
-                            <li><Link href="/service" className="text-sm hover:text-gray-400">Service</Link></li>
-                            <li><Link href="/project" className="text-sm hover:text-gray-400">Project</Link></li>
+                            <li><Link href="/" className="text-sm hover:text-primary-orange cursor-pointer">Home</Link></li>
+                            <li><Link href="/about" className="text-sm hover:text-primary-orange cursor-pointer">About Us</Link></li>
+                            <li><Link href="/services" className="text-sm hover:text-primary-orange cursor-pointer">Service</Link></li>
+                            <li><Link href="/projects" className="text-sm hover:text-primary-orange cursor-pointer">Project</Link></li>
                         </ul>
                     </div>
                 </div>

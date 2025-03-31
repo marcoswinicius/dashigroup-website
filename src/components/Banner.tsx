@@ -1,15 +1,16 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useSwipeable } from 'react-swipeable';
 import { bannerSlides, SLIDE_DURATION } from '@/config/banner';
 import { ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Banner() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [progress, setProgress] = useState(0);
-  const progressRef = useRef<HTMLDivElement>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % bannerSlides.length);
@@ -21,6 +22,27 @@ export default function Banner() {
     setProgress(0);
   };
 
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+    setProgress(0);
+    restartProgress();
+  };
+
+  const restartProgress = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+
+    const step = 100 / (SLIDE_DURATION / 100);
+    intervalRef.current = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          nextSlide();
+          return 0;
+        }
+        return prev + step;
+      });
+    }, 100);
+  };
+
   const handlers = useSwipeable({
     onSwipedLeft: nextSlide,
     onSwipedRight: prevSlide,
@@ -28,17 +50,10 @@ export default function Banner() {
   });
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          nextSlide();
-          return 0;
-        }
-        return prev + (100 / (SLIDE_DURATION / 10));
-      });
-    }, 10);
-
-    return () => clearInterval(timer);
+    restartProgress();
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
   }, [currentSlide]);
 
   return (
@@ -63,30 +78,26 @@ export default function Banner() {
 
             {/* Conteúdo do Slide */}
             <div className="absolute left-5 lg:left-24 top-1/2 -translate-y-1/2 max-w-2xl pr-14">
-              <span className="text-white block text-5xl lg:text-6xl font-bold">{slide.title}</span>
-              <span className="text-primary-orange block text-5xl lg:text-6xl font-bold">{slide.title_two}</span>
-              <p className="text-xl text-white/90 mb-6 mt-4">
-                {slide.subtitle}
-              </p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="max-w-4xl"
+              >
+                <span className="text-white block text-5xl lg:text-6xl font-bold">{slide.title}</span>
+                <span className="text-primary-orange block text-5xl lg:text-6xl font-bold">{slide.title_two}</span>
+                <p className="text-xl text-white/90 mb-6 mt-4">{slide.subtitle}</p>
 
-              <a href={slide.button_link}>
-                <button className='cursor-pointer inline-flex mb-4 items-center px-7 py-2 border border-transparent text-lg font-medium rounded-md text-white bg-primary-orange hover:bg-primary-orange/90 transition-colors duration-200'>
-                  <span className='text-white'>{slide.button_name}</span>
+                <a href={slide.button_link}>
+                <button className="cursor-pointer inline-flex mb-4 items-center px-7 py-2 border border-transparent text-lg font-medium rounded-md text-white bg-primary-orange hover:bg-primary-orange/90 transition-colors duration-200">
+                  <span className="text-white">{slide.button_name}</span>
                 </button>
               </a>
+              </motion.div>
 
 
-
-
-              {/* Timer */}
-              <div className="w-full h-1 bg-white/20">
-                <div
-                  ref={progressRef}
-                  className="h-full bg-white transition-all duration-100 ease-linear"
-                  style={{ width: `${progress}%` }}
-                />
-              </div>
             </div>
+
           </div>
         ))}
       </div>
@@ -100,19 +111,25 @@ export default function Banner() {
         <ChevronRight className="text-primary-orange" size={48} />
       </button>
 
-      {/* Indicadores de Slide */}
+      {/* Indicadores de Slide com Timer */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2">
         {bannerSlides.map((_, index) => (
           <button
             key={index}
-            onClick={() => {
-              setCurrentSlide(index);
-              setProgress(0);
-            }}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? 'bg-white w-8' : 'bg-white/50'
+            onClick={() => goToSlide(index)}
+            className={`relative h-3 rounded-full overflow-hidden transition-all duration-300 ${index === currentSlide ? 'w-14 bg-white/50' : 'w-3 bg-white/50'
               }`}
             aria-label={`Go to slide ${index + 1}`}
-          />
+          >
+            {index === currentSlide && (
+              <div
+                className="absolute left-0 top-0 h-full bg-primary-orange transition-all"
+                style={{
+                  width: `${progress}%`,
+                }}
+              />
+            )}
+          </button>
         ))}
       </div>
     </div>

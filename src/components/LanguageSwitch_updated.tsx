@@ -2,15 +2,12 @@
 
 import React, { useState, useRef } from 'react';
 import Globe from './ui/Globe';
-import EnglandFlag from '@/components/flags/englandFlag';
-import SpainFlag from '@/components/flags/spainFlag';
-
+import Image from 'next/image';
 
 const languages = [
-  { code: 'en', label: 'English', Flag: EnglandFlag },
-  { code: 'es', label: 'Español', Flag: SpainFlag },
+  { code: 'en', label: 'English', flag: '/flags/englandFlag.tsx' },
+  { code: 'es', label: 'Español', flag: '/flags/spainFlag.tsx' },
 ];
-
 
 const LanguageSwitch = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,23 +53,22 @@ const LanguageSwitch = () => {
       </button>
 
       {isOpen && (
-        <div className="absolute top-full right-0 mt-2 w-48 rounded-md shadow-lg bg-dark-grey z-50">
+        <div className="absolute top-full right-0 mt-2 w-48 rounded-md shadow-lg bg-dark-grey ring-1 ring-black ring-opacity-5 z-50">
           <div className="py-1" role="menu">
-            {languages.map(({ code, label, Flag }) => (
+            {languages.map((lang) => (
               <button
-                key={code}
+                key={lang.code}
                 onClick={() => {
-                  setCurrentLang({ code, label, Flag });
+                  setCurrentLang(lang);
                   setIsOpen(false);
                 }}
                 className="flex items-center gap-2 w-full text-left px-4 py-2 text-sm text-white hover:bg-white/10 transition-colors duration-200"
                 role="menuitem"
               >
-                <Flag />
-                {label}
+                <Image src={lang.flag} alt={lang.label} width={20} height={15} />
+                {lang.label}
               </button>
             ))}
-
           </div>
         </div>
       )}

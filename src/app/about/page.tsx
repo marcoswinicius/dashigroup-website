@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Indicators from '@/components/Indicators';
+import { ChevronDown } from 'lucide-react';
 
 export default function AboutUs() {
     return (
@@ -38,10 +40,13 @@ export default function AboutUs() {
                         </h1>
                     </motion.div>
                 </div>
+                <a href="#intro" className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                    <ChevronDown className="text-white w-8 h-8" />
+                </a>
             </section>
 
             {/* Main Content */}
-            <section className="bg-dark-grey py-20 px-4 md:px-24 home-background">
+            <section id='intro' className="bg-dark-grey py-12 px-4 md:px-24 home-background">
                 <div className="max-w-4xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -98,27 +103,16 @@ export default function AboutUs() {
             </section>
 
             {/* Stats Section */}
-            <section className="bg-dark-grey py-20 px-4 md:px-24">
+            <section className="bg-dark-grey py-10 px-4 md:px-24 flex items-center">
                 <div className="max-w-6xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
+                        className="flex items-center justify-center"
                     >
-                        <div className="p-6 bg-black/30 rounded-lg">
-                            <h3 className="text-4xl font-bold text-primary-orange mb-2">23+</h3>
-                            <p className="text-white">Years of Experience</p>
-                        </div>
-                        <div className="p-6 bg-black/30 rounded-lg">
-                            <h3 className="text-4xl font-bold text-primary-orange mb-2">21+</h3>
-                            <p className="text-white">Tier 1 Contractors</p>
-                        </div>
-                        <div className="p-6 bg-black/30 rounded-lg">
-                            <h3 className="text-4xl font-bold text-primary-orange mb-2">69+</h3>
-                            <p className="text-white">Tier 2 Contractors</p>
-                        </div>
+                        <Indicators />
                     </motion.div>
                 </div>
             </section>
