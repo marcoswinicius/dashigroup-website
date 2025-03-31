@@ -9,7 +9,7 @@ export default function CompanyInfo() {
         <>
             <Indicators />
 
-            <div className="flex flex-col lg:flex-row w-full items-center justify-center py-[120px] px-8 md:px-24 gap-32">
+            <div className="flex flex-col lg:flex-row w-full items-center justify-center py-8 md:py-[120px] px-8 md:px-24 gap-12 md:gap-32">
                 <div className="w-full lg:w-2/5">
                     <TransitionCard />
                 </div>

@@ -1,29 +1,12 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState, useRef, useEffect } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
-import Arrow from "./ui/Arrow"
+import { useState, useEffect, useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import Arrow from "./ui/Arrow";
 
-// Função utilitária para combinar classes
-function classNames(...classes: (string | undefined | null | false)[]): string {
-  return classes.filter(Boolean).join(' ');
-}
-
-// Define the project data structure
-type Project = {
-  id: string
-  title: string
-  subtitle: string
-  imageUrl: string
-  link: string
-  category: "REINFORCEMENT DETAILING" | "STEEL FIXING" | "GROUNDWORK AND FALSEWORK"
-}
-
-// Sample project data
-const projectsData: Project[] = [
+const projectsData = [
   {
     id: "1",
     title: "Data Center",
@@ -72,280 +55,126 @@ const projectsData: Project[] = [
     link: "/case-studies/groundwork-zeta",
     category: "GROUNDWORK AND FALSEWORK",
   },
-]
+];
 
-// Filter categories
 const filterCategories = [
   "ALL WORKS",
   "REINFORCEMENT DETAILING",
   "STEEL FIXING",
   "GROUNDWORK AND FALSEWORK",
-] as const
+] as const;
 
-export default function FeaturedProjects() {
-  const [activeFilter, setActiveFilter] = useState<(typeof filterCategories)[number]>("ALL WORKS")
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>(projectsData)
-  const [isDragging, setIsDragging] = useState(false)
-  const [startX, setStartX] = useState(0)
-  const [scrollLeft, setScrollLeft] = useState(0)
-  const [isAtStart, setIsAtStart] = useState(true)
-  const [isAtEnd, setIsAtEnd] = useState(false)
-  const carouselRef = useRef<HTMLDivElement>(null)
-  const lastDragX = useRef<number>(0)
+type Project = typeof projectsData[number];
 
-  const [startY, setStartY] = useState(0);
-  const [isHorizontalScroll, setIsHorizontalScroll] = useState(false);
+export default function ProjectCarousel() {
+  const [activeFilter, setActiveFilter] = useState<(typeof filterCategories)[number]>("ALL WORKS");
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>(projectsData);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
-
-  // Filter projects when activeFilter changes
   useEffect(() => {
     if (activeFilter === "ALL WORKS") {
-      setFilteredProjects(projectsData)
+      setFilteredProjects(projectsData);
     } else {
-      setFilteredProjects(projectsData.filter((project) => project.category === activeFilter))
+      setFilteredProjects(
+        projectsData.filter((p) => p.category === activeFilter)
+      );
     }
-
-    // Reset scroll position when filter changes
     if (carouselRef.current) {
-      carouselRef.current.scrollLeft = 0
-      setIsAtStart(true)
-      setIsAtEnd(false)
+      carouselRef.current.scrollLeft = 0;
     }
-  }, [activeFilter])
+  }, [activeFilter]);
 
-  // Check scroll position to update button states
-  const checkScrollPosition = () => {
-    if (!carouselRef.current) return
+  const scrollByAmount = () => carouselRef.current?.offsetWidth || 300;
 
-    const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current
-
-    // Check if at start
-    setIsAtStart(scrollLeft <= 10)
-
-    // Check if at end (with a small buffer for rounding errors)
-    setIsAtEnd(scrollLeft + clientWidth >= scrollWidth - 10)
-  }
-
-  // Add scroll event listener to check position
-  useEffect(() => {
-    const carousel = carouselRef.current
-    if (!carousel) return
-
-    // Initial check
-    checkScrollPosition()
-
-    // Add event listener
-    carousel.addEventListener("scroll", checkScrollPosition)
-    return () => carousel.removeEventListener("scroll", checkScrollPosition)
-  }, [filteredProjects])
-
-  // Handle mouse down for dragging
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!carouselRef.current) return
-
-    setIsDragging(true)
-    setStartX(e.clientX)
-    setScrollLeft(carouselRef.current.scrollLeft)
-    lastDragX.current = e.clientX
-
-    // Apply grabbing cursor to the body for consistent cursor during drag
-    document.body.style.cursor = "grabbing"
-    // Prevent text selection during dragging
-    document.body.classList.add("select-none")
-  }
-
-  // Handle touch start for mobile
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (!carouselRef.current) return;
-
-    setIsDragging(true);
-    setStartX(e.touches[0].clientX);
-    setStartY(e.touches[0].clientY);
-    setScrollLeft(carouselRef.current.scrollLeft);
-    lastDragX.current = e.touches[0].clientX;
-    setIsHorizontalScroll(false);
-  };
-
-
-  // Handle mouse move for dragging with precise 1:1 movement
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !carouselRef.current) return
-    e.preventDefault()
-
-    const currentX = e.clientX
-
-    // Update last position
-    lastDragX.current = currentX
-
-    // Move the carousel with the cursor in a 1:1 ratio
-    carouselRef.current.scrollLeft = scrollLeft - (currentX - startX)
-  }
-
-  // Handle touch move for mobile with precise 1:1 movement
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging || !carouselRef.current) return;
-
-    const currentX = e.touches[0].clientX;
-    const currentY = e.touches[0].clientY;
-    const diffX = Math.abs(currentX - startX);
-    const diffY = Math.abs(currentY - startY);
-
-    const threshold = 10; // px para considerar que é horizontal
-
-    if (!isHorizontalScroll && diffX > threshold && diffX > diffY) {
-      setIsHorizontalScroll(true);
-    }
-
-    if (isHorizontalScroll) {
-      e.preventDefault(); // Só previne se for claramente horizontal
-      carouselRef.current.scrollLeft = scrollLeft - (currentX - startX);
+  const scrollLeft = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: -scrollByAmount(), behavior: "smooth" });
     }
   };
 
-
-
-  // Handle mouse up to stop dragging - no momentum or snap
-  const handleMouseUp = () => {
-    setIsDragging(false)
-    document.body.style.cursor = ""
-    document.body.classList.remove("select-none")
-
-    // No momentum or snap - just leave the carousel where it is
-  }
-
-  // Handle scroll to previous card
-  const scrollPrev = () => {
-    if (!carouselRef.current || isAtStart) return
-
-    const itemWidth = carouselRef.current.querySelector(".carousel-item")?.clientWidth || 0
-    carouselRef.current.scrollBy({
-      left: -itemWidth,
-      behavior: "smooth",
-    })
-  }
-
-  // Handle scroll to next card
-  const scrollNext = () => {
-    if (!carouselRef.current || isAtEnd) return
-
-    const itemWidth = carouselRef.current.querySelector(".carousel-item")?.clientWidth || 0
-    carouselRef.current.scrollBy({
-      left: itemWidth,
-      behavior: "smooth",
-    })
-  }
+  const scrollRight = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: scrollByAmount(), behavior: "smooth" });
+    }
+  };
 
   return (
-    <div className="bg-primary-orange w-full mx-auto pl-4 md:pl-6 lg:pl-28 py-12">
-      {/* Header with title and filter */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-4">
-        <h2 className="text-3xl md:text-6xl font-bold">Featured Projects</h2>
-
-        <div className="flex flex-wrap gap-7 mr-10 lg:mr-24">
-          {filterCategories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveFilter(category)}
-              className={classNames(
-                "py-1 text-xl transition-colors",
-                activeFilter === category ? "border-b-3 border-dark-grey text-dark-grey" : "text-white hover:border-b-3 hover:border-white"
-              )}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Carousel container with navigation */}
-      <div className="relative">
-        {/* Left navigation arrow */}
-        <button
-          onClick={scrollPrev}
-          className={classNames(
-            "absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 rounded-full p-2 shadow-md transition-opacity",
-            isAtStart ? "opacity-40 cursor-not-allowed" : "opacity-100 cursor-pointer"
-          )}
-          aria-label="Previous slide"
-          disabled={isAtStart}
-        >
-          <ChevronLeft className="h-6 w-6" />
-        </button>
-
-        {/* Carousel */}
-        <div
-          ref={carouselRef}
-          className="carousel-container overflow-x-auto hide-scrollbar cursor-grab active:cursor-grabbing touch-pan-x"
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleMouseUp}
-          onDragStart={(e) => e.preventDefault()} // Prevent default drag behavior
-          style={{
-            scrollBehavior: "auto", // Disable smooth scrolling to prevent any automatic movement
-            WebkitOverflowScrolling: "touch", // For smoother scrolling on iOS
-          }}
-        >
-          <div className="flex">
-            {/* Main items - no duplicates */}
-            {filteredProjects.map((project) => (
-              <div
-                key={project.id}
-                className="carousel-item flex-shrink-0 w-[85%] sm:w-[calc(100%/1.5)] md:w-[calc(100%/2.2)] lg:w-[calc(100%/3.2)] mx-2 first:ml-4 last:mr-4"
-
+    <section className="bg-primary-orange w-full py-12 pl-4 md:pl-10">
+      <div className="px-4 md:px-6  lg:px-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+          <h2 className="text-3xl md:text-6xl font-bold text-white">Featured Projects</h2>
+          <div className="flex flex-wrap gap-6 mt-4 md:mt-0">
+            {filterCategories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveFilter(category)}
+                className={`py-1 text-lg md:text-xl transition-colors border-b-2 ${
+                  activeFilter === category ? "border-white text-white" : "border-transparent text-white/70 hover:text-white"
+                }`}
               >
-                <div className="relative h-[400px] sm:h-[400px] md:h-[500px] lg:h-[613px] overflow-hidden rounded-lg group">
-                  <Image
-                    src={project.imageUrl}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    draggable={false} // Prevent image dragging
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex justify-center items-end p-6">
-                    <Link
-                      href={project.link}
-                      className="text-white text-xl md:text-2xl font-medium  hover:underline transition-all"
-                      onClick={(e) => isDragging && e.preventDefault()} // Prevent navigation if dragging
-                    >
-                      <div className="flex flex-col  items-center gap-2">
-                        <span className="text-2xl font-medium">{project.title}</span>
-                        <span className="text-xl font-medium">{project.subtitle}</span>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+                {category}
+              </button>
             ))}
           </div>
         </div>
+      </div>
 
-        {/* Right navigation arrow */}
+      <div className="relative">
         <button
-          onClick={scrollNext}
-          className={classNames(
-            "absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 rounded-full p-2 shadow-md transition-opacity",
-            isAtEnd ? "opacity-40 cursor-not-allowed" : "opacity-100 cursor-pointer"
-          )}
-          aria-label="Next slide"
-          disabled={isAtEnd}
+          onClick={scrollLeft}
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/20 text-white p-2 rounded-full"
         >
-          <ChevronRight className="h-6 w-6 text-white" />
+          <ChevronLeft />
+        </button>
+
+        <div
+          ref={carouselRef}
+          className="carousel-container flex gap-4 overflow-x-auto scroll-snap-x snap-x snap-mandatory touch-auto hide-scrollbar px-4"
+        >
+          {filteredProjects.map((project, index) => (
+            <div
+              key={project.id}
+              className={`carousel-item w-[85%] sm:w-[calc(100%/1.5)] md:w-[calc(100%/2.2)] lg:w-[calc(100%/3.2)] snap-start shrink-0 ${index === 0 ? 'ml-2' : ''}`}
+            >
+              <div className="relative h-96 sm:h-[400px] md:h-[500px] lg:h-[613px] rounded-xl overflow-hidden group">
+                <Image
+                  src={project.imageUrl}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                                  <Link
+                    href={project.link}
+                    className="text-white text-lg md:text-2xl font-semibold hover:underline"
+                  >
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex justify-center items-end p-4">
+
+                    <div className="flex flex-col items-center gap-1">
+                      <span>{project.title}</span>
+                      <span className="text-sm md:text-lg">{project.subtitle}</span>
+                    </div>
+                  
+                </div>
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <button
+          onClick={scrollRight}
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/20 text-white p-2 rounded-full"
+        >
+          <ChevronRight />
         </button>
       </div>
 
-      {/* Button */}
-      <div className="flex items-end justify-end pr-24 pt-8">
-        <Link href={'/projects'}>
-          <button className="flex gap-2 text-xl text-dark-grey font-bold items-end cursor-pointer">
-            Explore All Projects
-            <Arrow />
-          </button>
+      <div className="flex justify-end mt-10 pr-6 md:pr-24">
+        <Link href="/projects" className="text-xl text-white font-bold flex items-center gap-2">
+          Explore All Projects
+          <Arrow />
         </Link>
       </div>
-    </div>
-  )
+    </section>
+  );
 }
