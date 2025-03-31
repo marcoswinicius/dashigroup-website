@@ -74,7 +74,7 @@ export default function Banner() {
                 alt={slide.title}
                 fill
                 className="object-cover"
-                priority={slide.image === "/images/construction-people.jpg"}
+                priority={true}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
               <div className="absolute inset-0 bg-black/40" />
