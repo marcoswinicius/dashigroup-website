@@ -91,7 +91,7 @@ export default function Services() {
 
             {/* Services Section */}
             <section className="py-16 px-6 lg:px-24 bg-dark-grey">
-                <h2 className="text-4xl font-bold text-center mb-16">What We Offer</h2>
+                <h2 className="text-4xl font-bold text-center text-white mb-16">What We Offer</h2>
                 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Service Cards */}

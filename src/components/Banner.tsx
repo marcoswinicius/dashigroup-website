@@ -84,7 +84,7 @@ export default function Banner() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
-                  className="max-w-4xl"
+                  className="max-w-2xl"
                 >
                   <span className="text-white block text-5xl lg:text-6xl font-bold">{slide.title}</span>
                   <span className="text-primary-orange block text-5xl lg:text-6xl font-bold">{slide.title_two}</span>
