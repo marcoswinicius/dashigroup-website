@@ -5,7 +5,6 @@ import Image from 'next/image';
 import InstaIcon from "../../public/social-icons/instagram-icon.svg"
 import FaceIcon from "../../public/social-icons/facebook-icon.svg"
 import LinkedinIcon from "../../public/social-icons/linkedin-icon.svg"
-import { ChevronRight } from 'lucide-react';
 
 
 export default function Footer() {
