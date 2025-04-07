@@ -11,7 +11,7 @@ export interface BannerSlide {
 export const bannerSlides: BannerSlide[] = [
   {
     id: 1,
-    image: '/images/construction-banner.jpg',
+    image: '/images/building-top-view.jpg',
     title: 'Excellence in',
     title_two: 'Everything We Do',
     subtitle: 'We partner with our clients to transform visions intolasting legacies, creating projects that empower communities and shape a brighter future.',
@@ -21,7 +21,7 @@ export const bannerSlides: BannerSlide[] = [
   },
   {
     id: 2,
-    image: '/images/group-engineers-banner.jpg',
+    image: '/images/steel-fixing.jpg',
     title: 'What',
     title_two: 'We Do',
     subtitle: 'We deliver innovative construction solutions, specializing in reinforced concrete frameworks, steel fixing, and RC detailing, ensuring every project meets the highest standards of quality and efficiency.',

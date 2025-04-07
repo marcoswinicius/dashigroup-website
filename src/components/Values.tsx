@@ -69,7 +69,7 @@ export default function Values() {
                             <span>Quality and Innovation</span>
                         </motion.li>
                         <motion.li 
-                            className="min-h-20 flex items-center gap-2 mb-4 p-3 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-700/60 transition-all cursor-pointer"
+                            className="min-h-20 max-h-[82px] flex items-center gap-2 mb-4 p-3 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-700/60 transition-all cursor-pointer"
                             variants={itemVariants}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}

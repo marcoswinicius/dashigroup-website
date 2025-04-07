@@ -15,7 +15,7 @@ export default function Footer() {
                 {/* Main Footer Content */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                     {/* Office Column */}
-                    <div className="order-1 sm:order-1 lg:order-1">
+                    <div className="order-2 sm:order-1 lg:order-1">
                         <h3 className="font-bold text-lg mb-4">Office</h3>
                         <p className="text-sm">
                             85 TOTTENHAM COURT ROAD,<br />
@@ -24,7 +24,7 @@ export default function Footer() {
                     </div>
 
                     {/* Contact Column */}
-                    <div className="order-2 sm:order-2 lg:order-2">
+                    <div className="order-3 sm:order-2 lg:order-2">
                         <h3 className="font-bold text-lg mb-4">Contact</h3>
                         <p className="text-sm">
                             Email: <a href="mailto:info@dashigroup.co.uk" className="hover:text-primary-orange">info@dashigroup.co.uk</a><br />
@@ -33,7 +33,7 @@ export default function Footer() {
                     </div>
 
                     {/* Links Column */}
-                    <div className="order-3 sm:order-3 lg:order-3">
+                    <div className="order-1 sm:order-3 lg:order-3">
                         <h3 className="font-bold text-lg mb-4">Link</h3>
                         <ul className="flex flex-wrap gap-4">
                             <li><Link href="/" className="text-sm hover:text-primary-orange cursor-pointer">Home</Link></li>

@@ -56,7 +56,7 @@ const LanguageSwitch = () => {
       </button>
 
       {isOpen && (
-        <div className="absolute top-full right-0 mt-2 w-48 rounded-md shadow-lg bg-dark-grey z-50">
+        <div className="absolute top-full md:right-0 left-3 right-60 mt-2 w-48 rounded-md shadow-lg bg-dark-grey z-50">
           <div className="py-1" role="menu">
             {languages.map(({ code, label, Flag }) => (
               <button

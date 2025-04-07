@@ -21,15 +21,15 @@ export default function CompanyInfo() {
                         className="max-w-4xl"
                     >
                         <div className="flex flex-col">
-                            <span className="text-white block text-3xl lg:text-5xl font-bold">
+                            <span className="text-white block text-2xl lg:text-5xl font-bold">
                                 Welcome to Dashi Group
                             </span>
-                            <span className="text-primary-orange block text-4xl lg:text-6xl font-bold">
+                            <span className="text-primary-orange block text-[34px] lg:text-6xl font-bold">
                                 WHY CHOOSE US ?
                             </span>
                         </div>
                     </motion.div>
-                    <h2 className="text-white font-bold text-xl md:text-2xl">Dashi Group is deeply committed to utilising its expertise to work proactively with its Clients to deliver high-profile construction projects successfully.</h2>
+                    <h2 className="text-white font-bold text-lg md:text-2xl">Dashi Group is deeply committed to utilising its expertise to work proactively with its Clients to deliver high-profile construction projects successfully.</h2>
                     <p className="text-white">
                         When you collaborate with Dashi Group, you&rsquo;re not just receiving a standalone service &ndash;
                         you&rsquo;re partnering with a dedicated, solutions-driven company committed to going above

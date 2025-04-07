@@ -45,17 +45,18 @@ const menuItems: MenuItem[] = [
         {
           title: 'Reinforcement Detailing',
           subtitle: 'Civil Engineering & Consulting',
-          image: '/images/rc-installation.jpg',
+          image: '/images/reinforcemet-detailing.jpg',
           href: '/services/reinforcement-detailing',
         },
-        {
-          title: 'Steel Fixing',
-          image: '/images/groundwork-and-falsework-tab.jpg',
+        {  
+          title: 'RC Installation',
+          subtitle: 'Steel Fixing ',
+          image: '/images/rc-installation.jpg',
           href: '/services/steel-fixing',
         },
         {
           title: 'Groundwork & Falsework',
-          image: '/images/reinforcemet-detailing.jpg',
+          image: '/images/groundwork-and-falsework-tab.jpg',
           href: '/services/groundwork-falsework',
         },
       ],
@@ -209,7 +210,10 @@ const Header = () => {
                         priority={true}
                       />
                     </div>
+                    <div className='flex flex-col'>
                     {sub.title}
+                    <span className='text-sm text-primary-orange'>{sub.subtitle}</span>
+                    </div>
                   </Link>
                 ))}
               </div>
