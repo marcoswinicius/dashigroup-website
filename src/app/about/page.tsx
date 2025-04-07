@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import Indicators from '@/components/Indicators';
 import { ChevronDown } from 'lucide-react';
+import Values from '@/components/Values';
 
 export default function AboutUs() {
     return (
@@ -23,8 +23,8 @@ export default function AboutUs() {
                         className="object-cover"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
-                    <div className="absolute inset-0 bg-black/40" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-dark-grey via-dark-grey/50 to-transparent" />
+                    <div className="absolute inset-0 bg-dark-grey/40" />
                 </motion.div>
 
                 <div className="relative h-full flex items-center px-4 md:px-24">
@@ -36,7 +36,7 @@ export default function AboutUs() {
                     >
                         <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
                             Excellence in
-                            <span className="text-primary-orange block">Everything We Do</span>
+                            <span className="text-primary-white block">Everything We Do</span>
                         </h1>
                     </motion.div>
                 </div>
@@ -56,54 +56,114 @@ export default function AboutUs() {
                         className="space-y-8 text-white"
                     >
                         <p className="text-lg leading-relaxed">
-                        Dashi Group is a London-based construction company founded in 2017 by Dashnor Loka, our visionary Managing Director. With over 23 years of experience in the industry, Dashnor established Dashi Group with a clear ambition: to set the standard as the market leader in steel fixing and reinforced concrete (RC) detailing across London. His expertise, refined over decades on London&apos;s most iconic projects, underpins everything we achieve.
+                            Dashi Group is a London based construction company founded by Dashnor Loka in 2017. Our Managing Director, Dashnor Loka, initially founded the company intending to establish Dashi Group as the market leader for steel fixing and RC detailing in London. Dashnor has obtained his knowledge of all reinforced concrete construction elements from over 23 years in the industry and working on prestigious projects in London.
                         </p>
 
                         <div className="grid md:grid-cols-2 gap-8 my-12">
-                            <div className="relative h-[300px]">
+                            <div className="relative h-[300px] group overflow-hidden rounded-lg">
                                 <Image
-                                    src="/images/group-engineers-banner.jpg"
+                                    src="/images/about-us.jpg"
                                     alt="Group of Engineers"
                                     fill
-                                    className="object-cover rounded-lg"
+                                    className="object-cover rounded-lg transition-transform duration-700 group-hover:scale-110"
                                 />
+                                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             </div>
                             <div className="flex flex-col justify-center">
                                 <p className="text-lg leading-relaxed">
-                                Dashi Group has grown steadily since its inception, expanding its expertise to offer a comprehensive range of services. Today, we deliver end-to-end excellence through reinforcement detailing, RC frameworks, formwork, and concrete solutions.
+                                    Since its inception, Dashi Group has gone from strength to strength and now also offers reinforcement detailing services and delivers all packages of RC frameworks including formwork and concrete.
                                 </p>
+                                <div className="mt-4 p-4 bg-primary/10 rounded-lg border-l-4 border-primary">
+                                    <h3 className="text-xl font-semibold mb-2 text-primary-white">Our Evolution</h3>
+                                    <p className="italic">From steel fixing specialists to comprehensive RC framework providers</p>
+                                </div>
                             </div>
                         </div>
 
                         <p className="text-lg leading-relaxed">
-                        Our holistic approach&mdash;spanning conceptual design to final construction&mdash;equips us with unique insights into the engineering workflow. This enables us to deliver strategic, cost-effective solutions that streamline processes, save time, and exceed expectations.
+                            The company is a well-established business that gained invaluable insights into the entire engineering workflow – from conceptual design to final construction. This holistic understanding allows the Business to provide its clients with strategic, cost-effective solutions that streamline processes and save time. By leveraging the team&apos;s experience working across diverse project types and environments, by being able to anticipate potential challenges and proactively develop contingency plans.
                         </p>
 
                         <div className="grid md:grid-cols-2 gap-8 my-12">
                             <div className="flex flex-col justify-center">
                                 <p className="text-lg leading-relaxed">
-                                Under Dashnor&apos;s leadership, we&apos;ve had the privilege of partnering with industry-leading Tier 1 and Tier 2 contractors and top structural designers. Our portfolio spans diverse projects, from high-rise developments and data centers to complex infrastructure works.
+                                    He has had the privilege of collaborating with some of the industry&apos;s top Tier 1 contractors, Tier 2 contractors, and structural designers. Dashnor has successfully delivered works on a wide variety of structures, including high-rise developments, data centers and complex infrastructure projects. Dashi Group utilises its extensive experience in reinforced concrete structures to analyse designs, optimise reinforcement plans, and deliver detailed and practical rebar drawings.
                                 </p>
                             </div>
-                            <div className="relative h-[300px]">
+                            <div className="relative h-[300px] group overflow-hidden rounded-lg">
                                 <Image
                                     src="/images/lombard-square.jpg"
                                     alt="Lombard Square Project"
                                     fill
-                                    className="object-cover rounded-lg"
+                                    className="object-cover rounded-lg transition-transform duration-700 group-hover:scale-110"
                                 />
+                                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             </div>
                         </div>
 
                         <p className="text-lg leading-relaxed">
-                            Since 2017, Dashi Group has built a reputation for foresight and reliability. We anticipate potential challenges before they arise, proactively developing contingency plans to prevent delays, rework, or budget overruns. Our promise is clear: to empower our clients with innovative solutions, turning bold visions into enduring realities.
+                            Since 2017 the Dashi Group has been known for aiding its Clients by anticipating and resolving potential issues before they cause delays, rework, or budget overruns on construction projects.
                         </p>
+                        
+                        {/* Timeline Section */}
+                        <div className="mt-16">
+                            <h2 className="text-3xl font-bold text-primary-white mb-8">Our Journey</h2>
+                            <div className="relative border-l-2 border-primary pl-8 space-y-12">
+                                <motion.div 
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.5 }}
+                                    viewport={{ once: true }}
+                                    className="relative"
+                                >
+                                    <div className="absolute -left-10 top-0 w-5 h-5 rounded-full bg-primary"></div>
+                                    <h3 className="text-xl font-semibold text-primary-white">2017</h3>
+                                    <p className="mt-2">Foundation of Dashi Group by Dashnor Loka, focusing on steel fixing and RC detailing</p>
+                                </motion.div>
+                                
+                                <motion.div 
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.5, delay: 0.2 }}
+                                    viewport={{ once: true }}
+                                    className="relative"
+                                >
+                                    <div className="absolute -left-10 top-0 w-5 h-5 rounded-full bg-primary"></div>
+                                    <h3 className="text-xl font-semibold text-primary-white">2019</h3>
+                                    <p className="mt-2">Expansion into reinforcement detailing services</p>
+                                </motion.div>
+                                
+                                <motion.div 
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.5, delay: 0.4 }}
+                                    viewport={{ once: true }}
+                                    className="relative"
+                                >
+                                    <div className="absolute -left-10 top-0 w-5 h-5 rounded-full bg-primary"></div>
+                                    <h3 className="text-xl font-semibold text-primary-white">2021</h3>
+                                    <p className="mt-2">Began offering complete RC frameworks including formwork and concrete</p>
+                                </motion.div>
+                                
+                                <motion.div 
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.5, delay: 0.6 }}
+                                    viewport={{ once: true }}
+                                    className="relative"
+                                >
+                                    <div className="absolute -left-10 top-0 w-5 h-5 rounded-full bg-primary"></div>
+                                    <h3 className="text-xl font-semibold text-primary-white">Today</h3>
+                                    <p className="mt-2">Established as a market leader in London&apos;s construction industry</p>
+                                </motion.div>
+                            </div>
+                        </div>
                     </motion.div>
                 </div>
             </section>
 
             {/* Stats Section */}
-            <section className="bg-dark-grey py-10 px-4 md:px-24 flex items-center">
+            <section className="py-10 px-4 md:px-24 flex items-center">
                 <div className="max-w-6xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -112,7 +172,7 @@ export default function AboutUs() {
                         viewport={{ once: true }}
                         className="flex items-center justify-center"
                     >
-                        <Indicators />
+                        <Values />
                     </motion.div>
                 </div>
             </section>

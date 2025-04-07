@@ -11,6 +11,7 @@ interface ServiceCardProps {
     title: string;
     description: string;
     image: string;
+    slug: string;
 }
 
 interface FeatureCardProps {
@@ -54,8 +55,8 @@ export default function Services() {
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
-                <div className="absolute inset-0 bg-black/40" />
+                <div className="absolute inset-0 bg-gradient-to-r from-dark-grey via-dark-grey/50 to-transparent" />
+                <div className="absolute inset-0 bg-dark-grey/40" />
                 
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
@@ -64,7 +65,7 @@ export default function Services() {
                     className="absolute inset-0 flex flex-col justify-center px-6 lg:px-24"
                 >
                     <h1 className="text-5xl lg:text-7xl font-bold text-white mb-4">Services</h1>
-                    <h2 className="text-2xl lg:text-4xl text-primary-orange font-semibold">
+                    <h2 className="text-2xl lg:text-4xl text-white font-semibold">
                         Partnering for Success, Delivering Excellence
                     </h2>
                 </motion.div>
@@ -100,6 +101,7 @@ export default function Services() {
                         title="Reinforcement Detailing"
                         description="Cutting-edge RC detailing powered by the latest 2D and 3D software, tailored for complex projects."
                         image="/images/reinforce-ment-detailing.jpg"
+                        slug="reinforcement-detailing"
                     />
                     
                     <ServiceCard
@@ -107,6 +109,7 @@ export default function Services() {
                         title="Steel Fixing"
                         description="Precision-driven steel fixing delivered by a skilled, cohesive team committed to safety, quality, and timeliness."
                         image="/images/steel-fixing.jpg"
+                        slug="steel-fixing"
                     />
                     
                     <ServiceCard
@@ -114,6 +117,7 @@ export default function Services() {
                         title="Groundwork & Falsework"
                         description="Robust, versatile solutions that lay the foundation for success and support every phase of construction."
                         image="/images/groundwork-falsework.jpg"
+                        slug="groundwork-falsework"
                     />
                 </div>
             </section>
@@ -152,16 +156,16 @@ export default function Services() {
             >
                 <h2 className="text-3xl font-bold mb-4">Ready to elevate your next project?</h2>
                 <p className="mb-8">Contact us today and discover how we can transform your vision into reality.</p>
-                <button className="bg-white text-primary-orange px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                <a href="/contact" className="inline-block bg-white text-primary-orange px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
                     Contact Us
-                </button>
+                </a>
             </motion.section>
         </>
     );
 }
 
 // Atualize os componentes auxiliares com as interfaces
-const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, image }) => (
+const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, image, slug }) => (
     <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -169,20 +173,25 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, ima
         transition={{ duration: 0.5 }}
         className="bg-black/20 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow border-[0.5px] border-primary-orange/100"
     >
-        <div className="relative h-48">
-            <Image
-                src={image}
-                alt={title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-        </div>
-        <div className="p-6">
-            <div className="mb-4">{icon}</div>
-            <h3 className="text-white text-xl font-bold mb-2">{title}</h3>
-            <p className="text-white">{description}</p>
-        </div>
+        <a href={`/services/${slug}`} className="block">
+            <div className="relative h-48">
+                <Image
+                    src={image}
+                    alt={title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+            </div>
+            <div className="p-6">
+                <div className="mb-4">{icon}</div>
+                <h3 className="text-white text-xl font-bold mb-2">{title}</h3>
+                <p className="text-white">{description}</p>
+                <div className="mt-4">
+                    <span className="text-primary-orange font-medium">Learn more →</span>
+                </div>
+            </div>
+        </a>
     </motion.div>
 );
 

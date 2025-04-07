@@ -23,17 +23,17 @@ const menuItems = [
         {
           title: 'Reinforcement Detailing',
           subtitle: 'Civil Engineering & Consulting',
-          image: '/images/rc-installation.jpg',
+          image: '/images/reinforcemet-detailing.jpg',
           href: '/services/reinforcement-detailing',
         },
         {
           title: 'Steel Fixing',
-          image: '/images/groundwork-and-falsework-tab.jpg',
+          image: '/images/steel-fixing.jpg',
           href: '/services/steel-fixing',
         },
         {
           title: 'Groundwork & Falsework',
-          image: '/images/reinforcemet-detailing.jpg',
+          image: '/images/groundwork-and-falsework-tab.jpg',
           href: '/services/groundwork-falsework',
         },
       ],
@@ -96,7 +96,7 @@ export default function MegaMenu() {
         >
           <Link
             href={item.href}
-            className={`text-white hover:text-primary-orange transition-colors relative pb-2 flex items-center gap-1 ${pathname === item.href ? "text-primary-orange" : ""
+            className={`text-white text-xl hover:text-primary-orange transition-colors relative pb-2 flex items-center gap-1 ${pathname === item.href ? "text-primary-orange" : ""
               }`}
           >
             {item.title}

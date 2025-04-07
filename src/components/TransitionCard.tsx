@@ -13,17 +13,18 @@ interface CardData {
 
 const cards: CardData[] = [
     {
-        image: "/images/rc-installation.jpg",
+        
+        image: "/images/reinforcemet-detailing.jpg",
         title: "REINFORCEMENT DETAILING",
         subtitle: "civil engineering & consulting"
     },
     {
-        image: "/images/groundwork-and-falsework-tab.jpg",
+        image: "/images/rc-installation.jpg",
         title: "RC INSTALLATION",
         subtitle: "Steel fixing"
     },
     {
-        image: "/images/reinforcemet-detailing.jpg",
+        image: "/images/groundwork-and-falsework-tab.jpg",
         title: "GROUNDWORK & FALSEWORK"
     }
 ];

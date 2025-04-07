@@ -43,24 +43,4 @@ export const projects: Project[] = [
         services: ["STEEL FIXING"],
         status: "Completed"
     },
-    {
-        id: 5,
-        title: 'Temporary Structure and Foundation 1',
-        image: '/images/construction-people.jpg',
-        slug: 'groundwork-1',
-        category: 'GROUNDWORK AND FALSEWORK',
-        shortDescription: "Innovative foundation solutions for complex construction challenges.",
-        detailedDescription: "This pioneering foundation and temporary structure project demonstrates our expertise in creating solid foundations for complex constructions. Our team developed customized solutions for specific terrain challenges, implementing advanced stabilization and support techniques. The work included the installation of innovative containment systems and temporary support structures that ensure safety and efficiency throughout all construction phases. Our meticulous approach to ground preparation and temporary foundation installation has established a secure base for subsequent project phases.",
-        services: ['GROUNDWORK AND FALSEWORK']
-    },
-    {
-        id: 6,
-        title: 'Temporary Structure and Foundation 2',
-        image: '/images/construction-people.jpg',
-        slug: 'groundwork-2',
-        category: 'GROUNDWORK AND FALSEWORK',
-        shortDescription: "Advanced engineering solutions for challenging ground conditions.",
-        detailedDescription: "This second foundation and temporary structure project presents an innovative approach to complex base engineering challenges. We implemented advanced excavation and stabilization solutions, using modern technologies to ensure structural integrity throughout all construction phases. Our team developed a unique temporary support system that allows maximum flexibility during construction while maintaining the highest safety standards. The project demonstrates our ability to adapt technical solutions to site-specific needs, ensuring a solid foundation for the permanent structure.",
-        services: ['GROUNDWORK AND FALSEWORK']
-    }
 ] as const; 

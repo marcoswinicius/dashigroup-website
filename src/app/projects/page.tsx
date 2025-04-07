@@ -51,8 +51,8 @@ export default function Projects() {
                         priority
                         sizes="100vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
-                    <div className="absolute inset-0 bg-black/40" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-dark-grey via-dark-grey/50 to-transparent" />
+                    <div className="absolute inset-0 bg-dark-grey/40" />
                 </motion.div>
 
                 <div className="relative h-full flex items-center px-4 md:px-24">

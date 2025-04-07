@@ -39,22 +39,6 @@ const projectsData = [
     link: "/projects/lombard-square",
     category: "REINFORCEMENT DETAILING",
   },
-  {
-    id: "5",
-    title: "Steel Fixing Epsilon",
-    subtitle: "REINFORCEMENT DETAILING",
-    imageUrl: "/images/construction-people.jpg",
-    link: "/case-studies/steel-fixing-epsilon",
-    category: "STEEL FIXING",
-  },
-  {
-    id: "6",
-    title: "Groundwork Project Zeta",
-    subtitle: "REINFORCEMENT DETAILING",
-    imageUrl: "/images/construction-people.jpg",
-    link: "/case-studies/groundwork-zeta",
-    category: "GROUNDWORK AND FALSEWORK",
-  },
 ];
 
 const filterCategories = [
@@ -100,7 +84,7 @@ export default function ProjectCarousel() {
 
   return (
     <section className="bg-primary-orange w-full py-12 pl-4 md:pl-10">
-      <div className="px-4 md:px-6  lg:px-10">
+      <div className="px-4 md:pr-10 lg:pl-0">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
           <h2 className="text-3xl md:text-6xl font-bold text-white">Featured Projects</h2>
           <div className="flex flex-wrap gap-6 mt-4 md:mt-0">

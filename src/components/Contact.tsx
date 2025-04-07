@@ -22,7 +22,7 @@ export default function Contact() {
             <div className="relative z-10 container mx-auto px-4 md:px-14 py-20">
                 {/* Title */}
                 <h1 className="text-white text-5xl lg:text-6xl font-bold text-center mb-16">
-                    Leading Way In Building & Civil Construction
+                Contact Us Today
                 </h1>
 
                 {/* Features */}
@@ -75,7 +75,7 @@ export default function Contact() {
                             <Link href="tel:+442035766134">+44 (0) 2035766134</Link> <br />
 
                             <b>Email:</b>{' '}
-                            <Link href="mailto:info@dashigroup.co.uk">info@dashigroup.co.uk</Link>                       
+                            <Link href="mailto:info@dashigroup.co.uk">info@dashigroup.co.uk</Link>
                         </p>
 
                         <div className='flex gap-2 items-center'>
@@ -84,14 +84,13 @@ export default function Contact() {
                         </div>
                         <p className="mb-8">
                             Monday - Friday<br />
-                            09:00 AM - 06:00 PM
+                            08:00 AM - 06:00 PM
                         </p>
 
                         <p className="mb-6">Do You Have Any Question, <br />Just Contact Us To Get Help!</p>
-
-                        <button className="bg-dark-grey text-white px-8 py-3 rounded-md w-full">
+                        <Link href="/contact" className="bg-dark-grey hover:bg-dark-grey/90 text-white px-8 py-3 rounded-md w-full">
                             Contact Us
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -2,15 +2,15 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { projects } from '@/config/projects';
+import { services } from '@/config/services';
 import { notFound } from 'next/navigation';
 import { use } from 'react';
 
-export default function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+export default function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
     const resolvedParams = use(params);
-    const project = projects.find(p => p.slug === resolvedParams.slug);
+    const service = services.find(s => s.slug === resolvedParams.slug);
 
-    if (!project) {
+    if (!service) {
         notFound();
     }
 
@@ -24,8 +24,8 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                     className="absolute inset-0"
                 >
                     <Image
-                        src={project.image}
-                        alt={project.title}
+                        src={service.image}
+                        alt={service.title}
                         fill
                         className="object-cover"
                         priority
@@ -41,7 +41,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                         transition={{ duration: 0.8 }}
                         className="text-5xl md:text-7xl font-bold text-white"
                     >
-                        {project.title}
+                        {service.title}
                     </motion.h1>
                 </div>
             </section>
@@ -54,22 +54,30 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                         transition={{ duration: 0.8 }}
                         className="prose prose-lg prose-invert"
                     >
-                        <h2 className="text-primary-orange text-3xl mb-2">About the Project</h2>
-                        <p className='text-white mb-2'>
-                            {project.detailedDescription || "Descrição detalhada em breve..."}
-                        </p>
-                        <h3 className='text-primary-orange text-2xl'>Services Provided</h3>
-                        <ul className='text-white'>
-                            {project.services?.map((service, index) => (
-                                <li key={index}>{service}</li>
-                            ))}
-                        </ul>
-                        <p>
-                             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
+                        <h2 className="text-primary-orange text-3xl mb-2">About this Service</h2>
+                        {service.detailedDescription.split('\n\n').map((paragraph, index) => (
+                            <p key={index} className='text-white mb-2 text-lg'>
+                                {paragraph}
+                            </p>
+                        ))}
+                        
+                        <div className="mt-12">
+                            <h3 className='text-primary-orange text-2xl mb-4'>Ready to get started?</h3>
+                            <p className='text-white'>
+                                Contact us today to discuss how our {service.title} service can benefit your next project.
+                            </p>
+                            <div className="mt-6">
+                                <a 
+                                    href="/contact" 
+                                    className="bg-primary-orange text-white px-6 py-3 rounded-md font-medium hover:bg-primary-orange/90 transition-colors"
+                                >
+                                    Contact Us
+                                </a>
+                            </div>
+                        </div>
                     </motion.div>
                 </div>
             </section>
         </main>
     );
-} 
+}
