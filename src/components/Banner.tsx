@@ -76,8 +76,8 @@ export default function Banner() {
                 className="object-cover"
                 priority={true}
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-dark-grey via-dark-grey/50 to-transparent" />
-              <div className="absolute inset-0 bg-dark-grey/40" />
+              <div className="absolute inset-0 bg-gradient-to-r from-dark-grey/60 via-white/10 to-transparent" />
+              <div className="absolute inset-0 bg-dark-grey/20" />
 
               <div className="absolute left-5 lg:left-24 top-1/2 -translate-y-1/2 max-w-2xl pr-14">
                 <motion.div
@@ -87,8 +87,8 @@ export default function Banner() {
                   className="max-w-2xl"
                 >
                   <span className="text-white block text-5xl lg:text-6xl font-bold">{slide.title}</span>
-                  <span className="text-white block text-5xl lg:text-6xl font-bold">{slide.title_two}</span>
-                  <p className="text-xl text-white/90 mb-6 mt-4">{slide.subtitle}</p>
+                  <span className="text-white block text-5xl lg:text-6xl font-bold">{slide.title_two}</span>     
+                  <p className="text-xl font-medium text-white mb-6 mt-4 text-soft-shadow">{slide.subtitle}</p>
 
                   <Link
                     href={slide.button_link}

@@ -36,7 +36,7 @@ export default function Values() {
                 className="w-full flex flex-col px-4 md:px-28 mt-16 justify-center items-center md:justify-start gap-6"
             >
                 <motion.h2 
-                    className="text-white block text-5xl lg:text-6xl font-bold"
+                    className="text-dark-grey/80 block text-5xl lg:text-6xl font-bold"
                     initial={{ opacity: 0, y: -20 }}
                     animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
                     transition={{ duration: 0.7 }}
@@ -51,30 +51,30 @@ export default function Values() {
                         animate={inView ? "visible" : "hidden"}
                     >
                         <motion.li 
-                            className="min-h-20 flex items-center gap-2 mb-4 p-3 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-700/60 transition-all cursor-pointer"
+                            className="min-h-20 flex items-center gap-2 mb-4 p-3 bg-primary-orange rounded-lg  transition-all cursor-pointer"
                             variants={itemVariants}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <Crown className="h-5 w-5 text-primary-orange" />
+                            <Crown className="h-5 w-5 text-white" />
                             <span>Strong Leadership</span>
                         </motion.li>
                         <motion.li 
-                            className="min-h-20 flex items-center gap-2 mb-4 p-3 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-700/60 transition-all cursor-pointer"
+                            className="min-h-20 flex items-center gap-2 mb-4 p-3 bg-primary-orange rounded-lg  transition-all cursor-pointer"
                             variants={itemVariants}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <Lightbulb className="h-5 w-5 text-primary-orange" />
+                            <Lightbulb className="h-5 w-5 text-white" />
                             <span>Quality and Innovation</span>
                         </motion.li>
                         <motion.li 
-                            className="min-h-20 max-h-[82px] flex items-center gap-2 mb-4 p-3 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-700/60 transition-all cursor-pointer"
+                            className="min-h-20 flex items-center gap-2 mb-4 p-3 bg-primary-orange rounded-lg border  transition-all cursor-pointer"
                             variants={itemVariants}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <Shield className="h-5 w-5 text-primary-orange" />
+                            <Shield className="h-5 w-5 text-white" />
                             <span>Safety Vision Statement</span>
                         </motion.li>
                     </motion.ul>
@@ -85,30 +85,30 @@ export default function Values() {
                         animate={inView ? "visible" : "hidden"}
                     >
                         <motion.li 
-                            className="min-h-20 flex items-center gap-2 mb-4 p-3 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-700/60 transition-all cursor-pointer"
+                            className="min-h-20 flex items-center gap-2 mb-4 p-3 bg-primary-orange rounded-lg  transition-all cursor-pointer"
                             variants={itemVariants}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <TrendingUp className="h-5 w-5 text-primary-orange" />
+                            <TrendingUp className="h-5 w-5 text-white" />
                             <span>Continuous Improvement</span>
                         </motion.li>
                         <motion.li 
-                            className="min-h-20 flex items-center gap-2 mb-4 p-3 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-700/60 transition-all cursor-pointer"
+                            className="min-h-20 flex items-center gap-2 mb-4 p-3 bg-primary-orange rounded-lg  transition-all cursor-pointer"
                             variants={itemVariants}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <ThumbsUp className="h-5 w-5 text-primary-orange" />
+                            <ThumbsUp className="h-5 w-5 text-white" />
                             <span>Positive Attitude</span>
                         </motion.li>
                         <motion.li 
-                            className="min-h-20 flex items-center gap-2 mb-4 p-3 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-700/60 transition-all cursor-pointer"
+                            className="min-h-20 flex items-center gap-2 mb-4 p-3 bg-primary-orange rounded-lg  transition-all cursor-pointer"
                             variants={itemVariants}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <Leaf className="h-5 w-5 text-primary-orange" />
+                            <Leaf className="h-5 w-5 text-white" />
                             <span>Environment Friendly</span>
                         </motion.li>
                     </motion.ul>

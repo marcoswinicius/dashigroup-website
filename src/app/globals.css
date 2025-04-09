@@ -1,31 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  --background: #182023;
-  --foreground: #182023;
+  --background: -white;
+  --foreground: white;
 }
 
 @theme {
-  --color-dark-grey: #182023;
+  --color-dark-grey: #32312F;
   --color-primary-orange: #F26529;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #182023;
-    --foreground: #182023;
-  }
-}
-
 body {
-  color: var(--foreground);
+  color: var(--background);
   font-family: var(--font-space-grotesk), sans-serif;
   background: var(--background)
 }
 
 .home-background {
-  background: var(--background) url('/background.svg') no-repeat fixed center;
+  position: relative;
+  z-index: 0;
+  background-color: var(--background);
 }
+
+/* Camada com o SVG esmaecido */
+.home-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/background.svg') no-repeat fixed center;
+  background-size: cover;
+  opacity: 0.15;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.text-soft-shadow {
+  text-shadow: 3px 5px 12px rgba(0, 0, 0, 1);
+}
+
+
 
 @layer utilities {
   .hide-scrollbar {

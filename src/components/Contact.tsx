@@ -15,7 +15,7 @@ export default function Contact() {
                     className="object-cover"
                     quality={100}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40" />
+                <div className="absolute inset-0 bg-gradient-to-b from-dark-grey/40 to-dark-grey/20" />
             </div>
 
             {/* Content */}
@@ -45,7 +45,7 @@ export default function Contact() {
                 {/* Contact Blocks */}
                 <div className="flex flex-col lg:flex-row gap-10">
                     {/* Form Block */}
-                    <div className="bg-primary-orange rounded-[15px] p-6 md:p-[54px] w-full lg:w-[963px]">
+                    <div className="bg-primary-orange rounded-[15px] p-6 md:p-[54px] w-full lg:w-[963px] text-white">
                         <h3 className="text-2xl font-bold mb-4">Request A Quote</h3>
                         <p className="mb-8">
                             Complete control over products allow us to our customers the best quality
@@ -55,7 +55,7 @@ export default function Contact() {
                     </div>
 
                     {/* Info Block */}
-                    <div className="bg-primary-orange rounded-[15px] p-6 md:p-[54px] w-full lg:w-[499px]">
+                    <div className="bg-primary-orange rounded-[15px] p-6 md:p-[54px] w-full lg:w-[499px] text-white">
 
                         <h3 className="text-2xl font-bold mb-8">Contact Info</h3>
                         <div className='flex gap-2 items-center'>

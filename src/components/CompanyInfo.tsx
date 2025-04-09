@@ -8,7 +8,7 @@ export default function CompanyInfo() {
     return (
         <>
             <Values />
-            <div className="flex flex-col lg:flex-row w-full items-start justify-start py-8 md:py-[80px] px-8 md:px-24 gap-12">
+            <div className="flex flex-col lg:flex-row w-full items-start justify-start py-8 md:py-[80px] px-4 md:px-24 gap-12">
                 <div className="w-full flex flex-col justify-start items-start">
                     <TransitionCard />
                 </div>
@@ -21,7 +21,7 @@ export default function CompanyInfo() {
                         className="max-w-4xl"
                     >
                         <div className="flex flex-col">
-                            <span className="text-white block text-2xl lg:text-5xl font-bold">
+                            <span className="text-dark-grey block text-2xl lg:text-5xl font-bold">
                                 Welcome to Dashi Group
                             </span>
                             <span className="text-primary-orange block text-[34px] lg:text-6xl font-bold">
@@ -29,8 +29,8 @@ export default function CompanyInfo() {
                             </span>
                         </div>
                     </motion.div>
-                    <h2 className="text-white font-bold text-lg md:text-2xl">Dashi Group is deeply committed to utilising its expertise to work proactively with its Clients to deliver high-profile construction projects successfully.</h2>
-                    <p className="text-white">
+                    <h2 className="text-dark-grey font-bold text-lg md:text-2xl">Dashi Group is deeply committed to utilising its expertise to work proactively with its Clients to deliver high-profile construction projects successfully.</h2>
+                    <p className="text-dark-grey font-medium text-lg">
                         When you collaborate with Dashi Group, you&rsquo;re not just receiving a standalone service &ndash;
                         you&rsquo;re partnering with a dedicated, solutions-driven company committed to going above
                         and beyond to ensure the success of your project.

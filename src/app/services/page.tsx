@@ -55,8 +55,8 @@ export default function Services() {
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-dark-grey via-dark-grey/50 to-transparent" />
-                <div className="absolute inset-0 bg-dark-grey/40" />
+                <div className="absolute inset-0 bg-gradient-to-r from-dark-grey/60 via-white/10 to-transparent" />
+                <div className="absolute inset-0 bg-dark-grey/30" />
                 
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
@@ -91,13 +91,13 @@ export default function Services() {
             </motion.section>
 
             {/* Services Section */}
-            <section className="py-16 px-6 lg:px-24 bg-dark-grey">
-                <h2 className="text-4xl font-bold text-center text-white mb-16">What We Offer</h2>
+            <section className="py-16 px-6 lg:px-24 bg-white">
+                <h2 className="text-4xl font-bold text-center text-dark-grey mb-16">What We Offer</h2>
                 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Service Cards */}
                     <ServiceCard
-                        icon={<Ruler className="w-12 h-12 text-primary-orange" />}
+                        icon={<Ruler className="w-12 h-12 text-white" />}
                         title="Reinforcement Detailing"
                         description="Cutting-edge RC detailing powered by the latest 2D and 3D software, tailored for complex projects."
                         image="/images/reinforce-ment-detailing.jpg"
@@ -105,7 +105,7 @@ export default function Services() {
                     />
                     
                     <ServiceCard
-                        icon={<HardHat className="w-12 h-12 text-primary-orange" />}
+                        icon={<HardHat className="w-12 h-12 text-white" />}
                         title="Steel Fixing"
                         description="Precision-driven steel fixing delivered by a skilled, cohesive team committed to safety, quality, and timeliness."
                         image="/images/steel-fixing.jpg"
@@ -113,7 +113,7 @@ export default function Services() {
                     />
                     
                     <ServiceCard
-                        icon={<Shovel className="w-12 h-12 text-primary-orange" />}
+                        icon={<Shovel className="w-12 h-12 text-white" />}
                         title="Groundwork & Falsework"
                         description="Robust, versatile solutions that lay the foundation for success and support every phase of construction."
                         image="/images/groundwork-falsework.jpg"
@@ -123,7 +123,7 @@ export default function Services() {
             </section>
 
             {/* Why Choose Us Section */}
-            <section className="py-16 px-6 lg:px-24 bg-dark-grey text-white">
+            <section className="py-16 px-6 lg:px-24 bg-white text-dark-grey">
                 <h2 className="text-4xl font-bold text-center mb-16">Why Choose Dashi Group?</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -152,9 +152,9 @@ export default function Services() {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
-                className="py-16 px-6 lg:px-24 bg-primary-orange text-white text-center"
+                className="py-16 px-6 lg:px-24 bg-primary-orange text-dark-grey text-center"
             >
-                <h2 className="text-3xl font-bold mb-4">Ready to elevate your next project?</h2>
+                <h2 className="text-3xl font-bold mb-4 ">Ready to elevate your next project?</h2>
                 <p className="mb-8">Contact us today and discover how we can transform your vision into reality.</p>
                 <a href="/contact" className="inline-block bg-white text-primary-orange px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
                     Contact Us
@@ -171,7 +171,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, ima
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="bg-black/20 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow border-[0.5px] border-primary-orange/100"
+        className="bg-primary-orange rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow border-[0.5px] border-primary-orange/100"
     >
         <a href={`/services/${slug}`} className="block">
             <div className="relative h-48">
@@ -203,8 +203,8 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description }) =
         transition={{ duration: 0.5 }}
         className="text-center p-6"
     >
-        <div className="mb-4 flex justify-center">{icon}</div>
+        <div className="mb-4 flex justify-center text-red-600">{icon}</div>
         <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-gray-300">{description}</p>
+        <p className="text-dark-grey">{description}</p>
     </motion.div>
 );

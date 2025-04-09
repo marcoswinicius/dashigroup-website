@@ -46,7 +46,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                 </div>
             </section>
 
-            <section className="py-16 px-4 md:px-24 bg-dark-grey">
+            <section className="py-16 px-4 md:px-24 bg-white">
                 <div className="max-w-4xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -55,18 +55,15 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                         className="prose prose-lg prose-invert"
                     >
                         <h2 className="text-primary-orange text-3xl mb-2">About the Project</h2>
-                        <p className='text-white mb-2'>
+                        <p className='text-dark-grey mb-2'>W
                             {project.detailedDescription || "Descrição detalhada em breve..."}
                         </p>
                         <h3 className='text-primary-orange text-2xl'>Services Provided</h3>
-                        <ul className='text-white'>
+                        <ul className='text-dark-grey'>
                             {project.services?.map((service, index) => (
                                 <li key={index}>{service}</li>
                             ))}
                         </ul>
-                        <p>
-                             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
                     </motion.div>
                 </div>
             </section>

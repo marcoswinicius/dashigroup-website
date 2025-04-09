@@ -51,8 +51,8 @@ export default function Projects() {
                         priority
                         sizes="100vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-dark-grey via-dark-grey/50 to-transparent" />
-                    <div className="absolute inset-0 bg-dark-grey/40" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-dark-grey/60 via-white/10 to-transparent" />
+                    <div className="absolute inset-0 bg-dark-grey/30" />
                 </motion.div>
 
                 <div className="relative h-full flex items-center px-4 md:px-24">
@@ -69,7 +69,7 @@ export default function Projects() {
             </section>
 
             {/* Intro Section */}
-            <section className="py-16 px-4 md:px-24">
+            <section className="py-16 px-4 md:px-24 bg-white">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -78,16 +78,16 @@ export default function Projects() {
                     className="max-w-4xl mx-auto text-center"
                 >
                     <h2 className="text-4xl font-bold text-primary-orange mb-6">
-                        Building Tomorrow, Today
+                        Building Tomorrow, Today 
                     </h2>
-                    <p className="text-white text-lg leading-relaxed">
+                    <p className="text-dark-grey text-lg leading-relaxed">
                         At Dashi Group, every project is a testament to our commitment to excellence, innovation, and precision. From cutting-edge data centers to sustainable residential communities, we transform complex challenges into lasting achievements. Explore our portfolio below and discover how we partner with clients to shape the future—one structure at a time.
                     </p>
                 </motion.div>
             </section>
 
             {/* Filter Section */}
-            <section className="px-4 md:px-24 py-8">
+            <section className="px-4 md:px-24 py-8 bg-white">
                 <div className="max-w-6xl mx-auto">
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
@@ -103,7 +103,7 @@ export default function Projects() {
                                 className={`px-6 py-2 rounded-full transition-all duration-300 ${
                                     activeFilter === filter
                                         ? 'bg-primary-orange text-white'
-                                        : 'bg-white/10 text-white hover:bg-primary-orange/20'
+                                        : 'bg-dark-grey/10 text-dark-grey hover:bg-dark-grey/20'
                                 }`}
                             >
                                 {filter === 'all' ? 'All Projects' : filter}
@@ -114,7 +114,7 @@ export default function Projects() {
             </section>
 
             {/* Projects Grid */}
-            <section className="px-4 md:px-24 py-16">
+            <section className="px-4 md:px-24 py-16 bg-white">
                 <div className="max-w-6xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0 }}

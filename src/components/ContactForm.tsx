@@ -27,7 +27,7 @@ export function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6 w-full max-w-4xl mx-auto">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6 w-full max-w-4xl mx-auto text-dark-grey">
       <div className="flex flex-col gap-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-2">
