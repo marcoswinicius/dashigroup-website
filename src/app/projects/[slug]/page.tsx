@@ -30,8 +30,8 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                         className="object-cover"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-dark-grey via-dark-grey/50 to-transparent" />
-                    <div className="absolute inset-0 bg-dark-grey/40" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-dark-grey/40 via-dark-grey/20 to-transparent" />
+                    <div className="absolute inset-0 bg-dark-grey/30" />
                 </motion.div>
 
                 <div className="relative h-full flex items-center px-4 md:px-24">
@@ -39,7 +39,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-5xl md:text-7xl font-bold text-white"
+                        className="text-5xl md:text-7xl font-bold text-white title-soft-shadow"
                     >
                         {project.title}
                     </motion.h1>
@@ -59,7 +59,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                             {project.detailedDescription || "Descrição detalhada em breve..."}
                         </p>
                         <h3 className='text-primary-orange text-2xl'>Services Provided</h3>
-                        <ul className='text-dark-grey'>
+                        <ul className='text-dark-grey font-bold'>
                             {project.services?.map((service, index) => (
                                 <li key={index}>{service}</li>
                             ))}

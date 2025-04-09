@@ -30,8 +30,8 @@ export default function ServicePage({ params }: { params: Promise<{ slug: string
                         className="object-cover"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-dark-grey via-dark-grey/50 to-transparent" />
-                    <div className="absolute inset-0 bg-dark-grey/40" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-dark-grey/60 via-white/10 to-transparent" />
+                    <div className="absolute inset-0 bg-dark-grey/30" />
                 </motion.div>
 
                 <div className="relative h-full flex items-center px-4 md:px-24">
@@ -39,14 +39,14 @@ export default function ServicePage({ params }: { params: Promise<{ slug: string
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-5xl md:text-7xl font-bold text-white"
+                        className="text-5xl md:text-7xl font-bold text-white title-soft-shadow"
                     >
                         {service.title}
                     </motion.h1>
                 </div>
             </section>
 
-            <section className="py-16 px-4 md:px-24 bg-dark-grey">
+            <section className="py-16 px-4 md:px-24 bg-white">
                 <div className="max-w-4xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -56,14 +56,14 @@ export default function ServicePage({ params }: { params: Promise<{ slug: string
                     >
                         <h2 className="text-primary-orange text-3xl mb-2">About this Service</h2>
                         {service.detailedDescription.split('\n\n').map((paragraph, index) => (
-                            <p key={index} className='text-white mb-2 text-lg'>
+                            <p key={index} className='text-dark-grey mb-2 text-lg'>
                                 {paragraph}
                             </p>
                         ))}
                         
                         <div className="mt-12">
                             <h3 className='text-primary-orange text-2xl mb-4'>Ready to get started?</h3>
-                            <p className='text-white'>
+                            <p className='text-dark-grey'>
                                 Contact us today to discuss how our {service.title} service can benefit your next project.
                             </p>
                             <div className="mt-6">

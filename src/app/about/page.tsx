@@ -34,9 +34,9 @@ export default function AboutUs() {
                         transition={{ duration: 0.8 }}
                         className="max-w-4xl"
                     >
-                        <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
+                        <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 title-soft-shadow">
                             Excellence in
-                            <span className="text-primary-white block">Everything We Do</span>
+                            <span className="text-primary-white block title-soft-shadow">Everything We Do</span>
                         </h1>
                     </motion.div>
                 </div>

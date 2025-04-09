@@ -64,8 +64,8 @@ export default function Services() {
                     transition={{ duration: 0.8 }}
                     className="absolute inset-0 flex flex-col justify-center px-6 lg:px-24"
                 >
-                    <h1 className="text-5xl lg:text-7xl font-bold text-white mb-4">Services</h1>
-                    <h2 className="text-2xl lg:text-4xl text-white font-semibold">
+                    <h1 className="text-5xl lg:text-7xl font-bold text-white mb-4 title-soft-shadow">Services</h1>
+                    <h2 className="text-2xl lg:text-4xl text-white font-semibold title-soft-shadow">
                         Partnering for Success, Delivering Excellence
                     </h2>
                 </motion.div>

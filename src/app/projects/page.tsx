@@ -61,7 +61,7 @@ export default function Projects() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 className="text-5xl md:text-7xl font-bold text-white">
+                        <h1 className="text-5xl md:text-7xl font-bold text-white text-soft-shadow">
                             Our Projects
                         </h1>
                     </motion.div>

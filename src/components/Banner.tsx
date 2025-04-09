@@ -86,8 +86,8 @@ export default function Banner() {
                   transition={{ duration: 0.8 }}
                   className="max-w-2xl"
                 >
-                  <span className="text-white block text-5xl lg:text-6xl font-bold">{slide.title}</span>
-                  <span className="text-white block text-5xl lg:text-6xl font-bold">{slide.title_two}</span>     
+                  <span className="text-white block text-5xl lg:text-6xl font-bold title-soft-shadow">{slide.title}</span>
+                  <span className="text-white block text-5xl lg:text-6xl font-bold title-soft-shadow">{slide.title_two}</span>     
                   <p className="text-xl font-medium text-white mb-6 mt-4 text-soft-shadow">{slide.subtitle}</p>
 
                   <Link

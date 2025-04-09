@@ -37,6 +37,9 @@ body {
 .text-soft-shadow {
   text-shadow: 3px 5px 12px rgba(0, 0, 0, 1);
 }
+.title-soft-shadow {
+  text-shadow: 3px 5px 12px rgba(0, 0, 0, 0.5);
+}
 
 
 
